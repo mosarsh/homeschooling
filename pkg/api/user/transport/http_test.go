@@ -127,7 +127,7 @@ func TestCreate(t *testing.T) {
 func TestList(t *testing.T) {
 	type listResponse struct {
 		Users []homeschooling.User `json:"users"`
-		Page  int          `json:"page"`
+		Page  int                  `json:"page"`
 	}
 	cases := []struct {
 		name       string

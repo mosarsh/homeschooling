@@ -19,6 +19,6 @@ type swaggUserListResponse struct {
 	// in:body
 	Body struct {
 		Users []homeschooling.User `json:"users"`
-		Page  int          `json:"page"`
+		Page  int                  `json:"page"`
 	}
 }

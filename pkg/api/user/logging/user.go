@@ -5,8 +5,13 @@ import (
 
 	"github.com/labstack/echo"
 
+<<<<<<< HEAD
 	"github.com/mosarsh/homeschooling"
 	"github.com/mosarsh/homeschooling/pkg/api/user"
+=======
+	"github.com/ribice/homeschooling"
+	"github.com/ribice/homeschooling/pkg/api/user"
+>>>>>>> master
 )
 
 // New creates new user logging service
