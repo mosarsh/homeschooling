@@ -3,14 +3,14 @@ package password_test
 import (
 	"testing"
 
-	"github.com/ribice/homeschooling"
-	"github.com/ribice/homeschooling/pkg/api/password"
+	"github.com/mosarsh/homeschooling"
+	"github.com/mosarsh/homeschooling/pkg/api/password"
 
 	"github.com/go-pg/pg/v9/orm"
 	"github.com/labstack/echo"
 
-	"github.com/ribice/homeschooling/pkg/utl/mock"
-	"github.com/ribice/homeschooling/pkg/utl/mock/mockdb"
+	"github.com/mosarsh/homeschooling/pkg/utl/mock"
+	"github.com/mosarsh/homeschooling/pkg/utl/mock/mockdb"
 
 	"github.com/stretchr/testify/assert"
 )

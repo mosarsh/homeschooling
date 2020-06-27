@@ -3,7 +3,7 @@ package transport
 import (
 	"net/http"
 
-	"github.com/ribice/homeschooling/pkg/api/auth"
+	"github.com/mosarsh/homeschooling/pkg/api/auth"
 
 	"github.com/labstack/echo"
 )

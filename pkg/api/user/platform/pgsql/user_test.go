@@ -6,10 +6,17 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
+<<<<<<< HEAD
+	"github.com/mosarsh/homeschooling"
+
+	"github.com/mosarsh/homeschooling/pkg/api/user/platform/pgsql"
+	"github.com/mosarsh/homeschooling/pkg/utl/mock"
+=======
 	"github.com/ribice/homeschooling"
 
 	"github.com/ribice/homeschooling/pkg/api/user/platform/pgsql"
 	"github.com/ribice/homeschooling/pkg/utl/mock"
+>>>>>>> master
 )
 
 func TestCreate(t *testing.T) {

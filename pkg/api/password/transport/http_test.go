@@ -6,13 +6,13 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/ribice/homeschooling"
-	"github.com/ribice/homeschooling/pkg/api/password"
-	"github.com/ribice/homeschooling/pkg/api/password/transport"
+	"github.com/mosarsh/homeschooling"
+	"github.com/mosarsh/homeschooling/pkg/api/password"
+	"github.com/mosarsh/homeschooling/pkg/api/password/transport"
 
-	"github.com/ribice/homeschooling/pkg/utl/mock"
-	"github.com/ribice/homeschooling/pkg/utl/mock/mockdb"
-	"github.com/ribice/homeschooling/pkg/utl/server"
+	"github.com/mosarsh/homeschooling/pkg/utl/mock"
+	"github.com/mosarsh/homeschooling/pkg/utl/mock/mockdb"
+	"github.com/mosarsh/homeschooling/pkg/utl/server"
 
 	"github.com/go-pg/pg/v9/orm"
 	"github.com/labstack/echo"

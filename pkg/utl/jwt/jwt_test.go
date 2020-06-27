@@ -4,8 +4,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/ribice/homeschooling"
-	"github.com/ribice/homeschooling/pkg/utl/jwt"
+	"github.com/mosarsh/homeschooling"
+	"github.com/mosarsh/homeschooling/pkg/utl/jwt"
 
 	"github.com/stretchr/testify/assert"
 )

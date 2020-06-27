@@ -3,9 +3,9 @@ package rbac_test
 import (
 	"testing"
 
-	"github.com/ribice/homeschooling"
-	"github.com/ribice/homeschooling/pkg/utl/mock"
-	"github.com/ribice/homeschooling/pkg/utl/rbac"
+	"github.com/mosarsh/homeschooling"
+	"github.com/mosarsh/homeschooling/pkg/utl/mock"
+	"github.com/mosarsh/homeschooling/pkg/utl/rbac"
 
 	"github.com/labstack/echo"
 
