@@ -1,4 +1,4 @@
-module github.com/ribice/gorsk
+module github.com/mosarsh/homeschooling
 
 go 1.14
 
