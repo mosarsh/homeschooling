@@ -3,7 +3,7 @@ package rbac
 import (
 	"github.com/labstack/echo"
 
-	"github.com/ribice/homeschooling"
+	"github.com/mosarsh/homeschooling"
 )
 
 // Service is RBAC application service

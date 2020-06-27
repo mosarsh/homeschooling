@@ -5,8 +5,8 @@ import (
 	"github.com/go-pg/pg/v9/orm"
 	"github.com/labstack/echo"
 
-	"github.com/ribice/homeschooling"
-	"github.com/ribice/homeschooling/pkg/api/user/platform/pgsql"
+	"github.com/mosarsh/homeschooling"
+	"github.com/mosarsh/homeschooling/pkg/api/user/platform/pgsql"
 )
 
 // Service represents user application interface

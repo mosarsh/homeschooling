@@ -6,8 +6,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/ribice/homeschooling"
-	"github.com/ribice/homeschooling/pkg/utl/secure"
+	"github.com/mosarsh/homeschooling"
+	"github.com/mosarsh/homeschooling/pkg/utl/secure"
 
 	"github.com/go-pg/pg/v9"
 	"github.com/go-pg/pg/v9/orm"

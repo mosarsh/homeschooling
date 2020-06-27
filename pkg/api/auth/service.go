@@ -5,8 +5,8 @@ import (
 	"github.com/go-pg/pg/v9/orm"
 	"github.com/labstack/echo"
 
-	"github.com/ribice/homeschooling"
-	"github.com/ribice/homeschooling/pkg/api/auth/platform/pgsql"
+	"github.com/mosarsh/homeschooling"
+	"github.com/mosarsh/homeschooling/pkg/api/auth/platform/pgsql"
 )
 
 // New creates new iam service

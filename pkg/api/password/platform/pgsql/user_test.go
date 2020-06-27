@@ -5,9 +5,9 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/ribice/homeschooling"
-	"github.com/ribice/homeschooling/pkg/api/password/platform/pgsql"
-	"github.com/ribice/homeschooling/pkg/utl/mock"
+	"github.com/mosarsh/homeschooling"
+	"github.com/mosarsh/homeschooling/pkg/api/password/platform/pgsql"
+	"github.com/mosarsh/homeschooling/pkg/utl/mock"
 )
 
 func TestView(t *testing.T) {

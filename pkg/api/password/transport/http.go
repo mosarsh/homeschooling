@@ -4,8 +4,8 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/ribice/homeschooling"
-	"github.com/ribice/homeschooling/pkg/api/password"
+	"github.com/mosarsh/homeschooling"
+	"github.com/mosarsh/homeschooling/pkg/api/password"
 
 	"github.com/labstack/echo"
 )

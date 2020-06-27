@@ -5,7 +5,7 @@ import (
 
 	"github.com/labstack/echo"
 
-	"github.com/ribice/homeschooling"
+	"github.com/mosarsh/homeschooling"
 )
 
 // Custom errors

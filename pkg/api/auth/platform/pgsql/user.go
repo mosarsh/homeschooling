@@ -3,7 +3,7 @@ package pgsql
 import (
 	"github.com/go-pg/pg/v9/orm"
 
-	"github.com/ribice/homeschooling"
+	"github.com/mosarsh/homeschooling"
 )
 
 // User represents the client for user table

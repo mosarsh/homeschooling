@@ -3,10 +3,10 @@ package pgsql_test
 import (
 	"testing"
 
-	"github.com/ribice/homeschooling"
-	"github.com/ribice/homeschooling/pkg/utl/mock"
+	"github.com/mosarsh/homeschooling"
+	"github.com/mosarsh/homeschooling/pkg/utl/mock"
 
-	"github.com/ribice/homeschooling/pkg/api/auth/platform/pgsql"
+	"github.com/mosarsh/homeschooling/pkg/api/auth/platform/pgsql"
 
 	"github.com/stretchr/testify/assert"
 )

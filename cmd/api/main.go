@@ -3,9 +3,9 @@ package main
 import (
 	"flag"
 
-	"github.com/ribice/homeschooling/pkg/api"
+	"github.com/mosarsh/homeschooling/pkg/api"
 
-	"github.com/ribice/homeschooling/pkg/utl/config"
+	"github.com/mosarsh/homeschooling/pkg/utl/config"
 )
 
 func main() {

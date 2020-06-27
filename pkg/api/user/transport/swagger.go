@@ -1,7 +1,7 @@
 package transport
 
 import (
-	"github.com/ribice/homeschooling"
+	"github.com/mosarsh/homeschooling"
 )
 
 // User model response

@@ -6,9 +6,9 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/ribice/homeschooling"
+	"github.com/mosarsh/homeschooling"
 
-	"github.com/ribice/homeschooling/pkg/utl/postgres"
+	"github.com/mosarsh/homeschooling/pkg/utl/postgres"
 
 	"github.com/fortytw2/dockertest"
 )

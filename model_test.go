@@ -4,8 +4,8 @@ import (
 	"context"
 	"testing"
 
-	"github.com/ribice/homeschooling"
-	"github.com/ribice/homeschooling/pkg/utl/mock"
+	"github.com/mosarsh/homeschooling"
+	"github.com/mosarsh/homeschooling/pkg/utl/mock"
 )
 
 func TestBeforeInsert(t *testing.T) {
