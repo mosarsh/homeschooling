@@ -4,13 +4,8 @@ package user
 import (
 	"github.com/labstack/echo"
 
-<<<<<<< HEAD
 	"github.com/mosarsh/homeschooling"
 	"github.com/mosarsh/homeschooling/pkg/utl/query"
-=======
-	"github.com/ribice/homeschooling"
-	"github.com/ribice/homeschooling/pkg/utl/query"
->>>>>>> master
 )
 
 // Create creates a new user account
