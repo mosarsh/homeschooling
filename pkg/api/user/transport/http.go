@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/mosarsh/homeschooling"
+	homeschooling "github.com/mosarsh/homeschooling/models"
 	"github.com/mosarsh/homeschooling/pkg/api/user"
 
 	"github.com/labstack/echo"

@@ -3,7 +3,7 @@ package rbac_test
 import (
 	"testing"
 
-	"github.com/mosarsh/homeschooling"
+	homeschooling "github.com/mosarsh/homeschooling/models"
 	"github.com/mosarsh/homeschooling/pkg/utl/mock"
 	"github.com/mosarsh/homeschooling/pkg/utl/rbac"
 

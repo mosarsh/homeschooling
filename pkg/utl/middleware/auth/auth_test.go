@@ -9,7 +9,7 @@ import (
 	"github.com/labstack/echo"
 	"github.com/stretchr/testify/assert"
 
-	"github.com/mosarsh/homeschooling"
+	homeschooling "github.com/mosarsh/homeschooling/models"
 	"github.com/mosarsh/homeschooling/pkg/utl/middleware/auth"
 )
 

@@ -1,7 +1,7 @@
 package mock
 
 import (
-	"github.com/mosarsh/homeschooling"
+	homeschooling "github.com/mosarsh/homeschooling/models"
 )
 
 // JWT mock
