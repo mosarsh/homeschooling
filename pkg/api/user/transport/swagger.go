@@ -1,8 +1,6 @@
 package transport
 
-import (
-	"github.com/mosarsh/homeschooling"
-)
+import homeschooling "github.com/mosarsh/homeschooling/models"
 
 // User model response
 // swagger:response userResp

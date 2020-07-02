@@ -3,7 +3,7 @@ package query
 import (
 	"github.com/labstack/echo"
 
-	"github.com/mosarsh/homeschooling"
+	homeschooling "github.com/mosarsh/homeschooling/models"
 )
 
 // List prepares data for list queries

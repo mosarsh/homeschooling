@@ -1,7 +1,7 @@
 package transport
 
 import (
-	"github.com/mosarsh/homeschooling"
+	homeschooling "github.com/mosarsh/homeschooling/models"
 )
 
 // Login request

@@ -9,7 +9,7 @@ import (
 
 	"github.com/labstack/echo"
 
-	"github.com/mosarsh/homeschooling"
+	homeschooling "github.com/mosarsh/homeschooling/models"
 	"github.com/mosarsh/homeschooling/pkg/api/auth"
 	"github.com/mosarsh/homeschooling/pkg/api/auth/transport"
 	"github.com/mosarsh/homeschooling/pkg/utl/jwt"

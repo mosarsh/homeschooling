@@ -6,7 +6,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/mosarsh/homeschooling"
+	homeschooling "github.com/mosarsh/homeschooling/models"
 	"github.com/mosarsh/homeschooling/pkg/utl/secure"
 
 	"github.com/go-pg/pg/v9"
@@ -21,7 +21,10 @@ func main() {
 	INSERT INTO public.roles VALUES (120, 120, 'COMPANY_ADMIN');
 	INSERT INTO public.roles VALUES (130, 130, 'LOCATION_ADMIN');
 	INSERT INTO public.roles VALUES (200, 200, 'USER');`
-	var psn = os.Getenv("DATABASE_URL")
+
+	db_url := fmt.Sprintf("%s://%s:%s@%s:%s/%s?sslmode=%s", "postgresql", os.Getenv("DB_USER"), os.Getenv("DB_PASSWORD"), os.Getenv("DB_HOST"), os.Getenv("DB_PORT"), os.Getenv("DB_NAME"), os.Getenv("DB_SSL_MODE"))
+
+	var psn = os.Getenv(db_url)
 	queries := strings.Split(dbInsert, ";")
 
 	u, err := pg.ParseURL(psn)

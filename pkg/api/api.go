@@ -33,6 +33,7 @@ package api
 
 import (
 	"crypto/sha1"
+	"fmt"
 	"os"
 
 	"github.com/mosarsh/homeschooling/pkg/utl/zlog"
@@ -58,7 +59,9 @@ import (
 
 // Start starts the API service
 func Start(cfg *config.Configuration) error {
-	db, err := postgres.New(os.Getenv("DATABASE_URL"), cfg.DB.Timeout, cfg.DB.LogQueries)
+	db_url := fmt.Sprintf("%s://%s:%s@%s:%s/%s?sslmode=%s", "postgresql", os.Getenv("DB_USER"), os.Getenv("DB_PASSWORD"), os.Getenv("DB_HOST"), os.Getenv("DB_PORT"), os.Getenv("DB_NAME"), os.Getenv("DB_SSL_MODE"))
+
+	db, err := postgres.New(db_url, cfg.DB.Timeout, cfg.DB.LogQueries)
 	if err != nil {
 		return err
 	}

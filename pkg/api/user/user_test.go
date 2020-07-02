@@ -6,7 +6,7 @@ import (
 	"github.com/go-pg/pg/v9/orm"
 	"github.com/labstack/echo"
 
-	"github.com/mosarsh/homeschooling"
+	homeschooling "github.com/mosarsh/homeschooling/models"
 	"github.com/mosarsh/homeschooling/pkg/api/user"
 	"github.com/mosarsh/homeschooling/pkg/utl/mock"
 	"github.com/mosarsh/homeschooling/pkg/utl/mock/mockdb"
