@@ -58,7 +58,13 @@ import (
 
 // Start starts the API service
 func Start(cfg *config.Configuration) error {
+<<<<<<< Updated upstream
 	db, err := postgres.New(os.Getenv("DATABASE_URL"), cfg.DB.Timeout, cfg.DB.LogQueries)
+=======
+	db_url := fmt.Sprintf("%s://%s:%s@%s:%s/%s?sslmode=%s", os.Getenv("DB_DRIVER"), os.Getenv("DB_USER"), os.Getenv("DB_PASSWORD"), os.Getenv("DB_HOST"), os.Getenv("DB_PORT"), os.Getenv("DB_NAME"), os.Getenv("DB_SSL_MODE"))
+
+	db, err := postgres.New(db_url, cfg.DB.Timeout, cfg.DB.LogQueries)
+>>>>>>> Stashed changes
 	if err != nil {
 		return err
 	}

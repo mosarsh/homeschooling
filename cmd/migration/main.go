@@ -21,10 +21,18 @@ func main() {
 	INSERT INTO public.roles VALUES (120, 120, 'COMPANY_ADMIN');
 	INSERT INTO public.roles VALUES (130, 130, 'LOCATION_ADMIN');
 	INSERT INTO public.roles VALUES (200, 200, 'USER');`
+<<<<<<< Updated upstream
 	var psn = os.Getenv("DATABASE_URL")
+=======
+
+	fmt.Println(os.Getenv("DB_DRIVER"))
+
+	db_url := fmt.Sprintf("%s://%s:%s@%s:%s/%s?sslmode=%s", os.Getenv("DB_DRIVER"), os.Getenv("DB_USER"), os.Getenv("DB_PASSWORD"), os.Getenv("DB_HOST"), os.Getenv("DB_PORT"), os.Getenv("DB_NAME"), os.Getenv("DB_SSL_MODE"))
+
+>>>>>>> Stashed changes
 	queries := strings.Split(dbInsert, ";")
 
-	u, err := pg.ParseURL(psn)
+	u, err := pg.ParseURL(db_url)
 	checkErr(err)
 	db := pg.Connect(u)
 	_, err = db.Exec("SELECT 1")
@@ -50,6 +58,8 @@ func checkErr(err error) {
 }
 
 func createSchema(db *pg.DB, models ...interface{}) {
+	fmt.Println("starting to create tables")
+	fmt.Println(db)
 	for _, model := range models {
 		checkErr(db.CreateTable(model, &orm.CreateTableOptions{
 			FKConstraints: true,
