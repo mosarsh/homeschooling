@@ -6,9 +6,9 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	homeschooling "github.com/mosarsh/homeschooling/server/src/models"
 	"github.com/mosarsh/homeschooling/server/src/api/password"
 	"github.com/mosarsh/homeschooling/server/src/api/password/transport"
+	homeschooling "github.com/mosarsh/homeschooling/server/src/models"
 
 	"github.com/mosarsh/homeschooling/server/src/utl/mock"
 	"github.com/mosarsh/homeschooling/server/src/utl/mock/mockdb"

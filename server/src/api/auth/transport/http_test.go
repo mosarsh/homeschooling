@@ -9,9 +9,9 @@ import (
 
 	"github.com/labstack/echo"
 
-	homeschooling "github.com/mosarsh/homeschooling/server/src/models"
 	"github.com/mosarsh/homeschooling/server/src/api/auth"
 	"github.com/mosarsh/homeschooling/server/src/api/auth/transport"
+	homeschooling "github.com/mosarsh/homeschooling/server/src/models"
 	"github.com/mosarsh/homeschooling/server/src/utl/jwt"
 	authMw "github.com/mosarsh/homeschooling/server/src/utl/middleware/auth"
 	"github.com/mosarsh/homeschooling/server/src/utl/mock"

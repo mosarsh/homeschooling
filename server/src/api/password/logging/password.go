@@ -5,8 +5,8 @@ import (
 
 	"github.com/labstack/echo"
 
-	homeschooling "github.com/mosarsh/homeschooling/server/src/models"
 	"github.com/mosarsh/homeschooling/server/src/api/password"
+	homeschooling "github.com/mosarsh/homeschooling/server/src/models"
 )
 
 // New creates new password logging service

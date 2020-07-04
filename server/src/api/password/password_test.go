@@ -3,8 +3,8 @@ package password_test
 import (
 	"testing"
 
-	homeschooling "github.com/mosarsh/homeschooling/server/src/models"
 	"github.com/mosarsh/homeschooling/server/src/api/password"
+	homeschooling "github.com/mosarsh/homeschooling/server/src/models"
 
 	"github.com/go-pg/pg/v9/orm"
 	"github.com/labstack/echo"

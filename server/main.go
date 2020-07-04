@@ -3,9 +3,15 @@ package main
 import (
 	"flag"
 
+<<<<<<< HEAD:server/main.go
 	"github.com/mosarsh/homeschooling/server/src/api"
 
 	"github.com/mosarsh/homeschooling/server/src/utl/config"
+=======
+	"github.com/mosarsh/homeschooling/src/api"
+
+	"github.com/mosarsh/homeschooling/src/utl/config"
+>>>>>>> master:server/main.go
 )
 
 func main() {
