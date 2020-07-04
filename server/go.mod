@@ -1,4 +1,4 @@
-module github.com/mosarsh/homeschooling
+module github.com/mosarsh/homeschooling/server
 
 go 1.14
 

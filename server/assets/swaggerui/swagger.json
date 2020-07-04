@@ -345,20 +345,12 @@
       "description": "AccessRole represents access role type",
       "type": "integer",
       "format": "int64",
-<<<<<<< HEAD:server/assets/swaggerui/swagger.json
       "x-go-package": "github.com/mosarsh/homeschooling/server/src/utl/model"
-=======
-      "x-go-package": "github.com/mosarsh/homeschooling/src/utl/model"
->>>>>>> master:server/assets/swaggerui/swagger.json
     },
     "HTTP": {
       "description": "HTTP represents password http transport service",
       "type": "object",
-<<<<<<< HEAD:server/assets/swaggerui/swagger.json
       "x-go-package": "github.com/mosarsh/homeschooling/server/src/api/password/transport"
-=======
-      "x-go-package": "github.com/mosarsh/homeschooling/src/api/password/transport"
->>>>>>> master:server/assets/swaggerui/swagger.json
     },
     "Role": {
       "description": "Role model",
@@ -375,11 +367,7 @@
           "x-go-name": "Name"
         }
       },
-<<<<<<< HEAD:server/assets/swaggerui/swagger.json
       "x-go-package": "github.com/mosarsh/homeschooling/server/src/utl/model"
-=======
-      "x-go-package": "github.com/mosarsh/homeschooling/src/utl/model"
->>>>>>> master:server/assets/swaggerui/swagger.json
     },
     "User": {
       "description": "User represents user domain model",
@@ -461,11 +449,7 @@
           "x-go-name": "Username"
         }
       },
-<<<<<<< HEAD:server/assets/swaggerui/swagger.json
       "x-go-package": "github.com/mosarsh/homeschooling/server/src/utl/model"
-=======
-      "x-go-package": "github.com/mosarsh/homeschooling/src/utl/model"
->>>>>>> master:server/assets/swaggerui/swagger.json
     },
     "credentials": {
       "type": "object",
@@ -479,11 +463,7 @@
           "x-go-name": "Username"
         }
       },
-<<<<<<< HEAD:server/assets/swaggerui/swagger.json
       "x-go-package": "github.com/mosarsh/homeschooling/server/src/api/auth/transport"
-=======
-      "x-go-package": "github.com/mosarsh/homeschooling/src/api/auth/transport"
->>>>>>> master:server/assets/swaggerui/swagger.json
     },
     "listResponse": {
       "type": "object",
@@ -501,11 +481,7 @@
           "x-go-name": "Users"
         }
       },
-<<<<<<< HEAD:server/assets/swaggerui/swagger.json
       "x-go-package": "github.com/mosarsh/homeschooling/server/src/api/user/transport"
-=======
-      "x-go-package": "github.com/mosarsh/homeschooling/src/api/user/transport"
->>>>>>> master:server/assets/swaggerui/swagger.json
     },
     "pwChange": {
       "description": "Password change request",
@@ -525,11 +501,7 @@
         }
       },
       "x-go-name": "changeReq",
-<<<<<<< HEAD:server/assets/swaggerui/swagger.json
       "x-go-package": "github.com/mosarsh/homeschooling/server/src/api/password/transport"
-=======
-      "x-go-package": "github.com/mosarsh/homeschooling/src/api/password/transport"
->>>>>>> master:server/assets/swaggerui/swagger.json
     },
     "userCreate": {
       "description": "User create request",
@@ -574,11 +546,7 @@
         }
       },
       "x-go-name": "createReq",
-<<<<<<< HEAD:server/assets/swaggerui/swagger.json
       "x-go-package": "github.com/mosarsh/homeschooling/server/src/api/user/transport"
-=======
-      "x-go-package": "github.com/mosarsh/homeschooling/src/api/user/transport"
->>>>>>> master:server/assets/swaggerui/swagger.json
     },
     "userUpdate": {
       "description": "User update request",
@@ -606,11 +574,7 @@
         }
       },
       "x-go-name": "updateReq",
-<<<<<<< HEAD:server/assets/swaggerui/swagger.json
       "x-go-package": "github.com/mosarsh/homeschooling/server/src/api/user/transport"
-=======
-      "x-go-package": "github.com/mosarsh/homeschooling/src/api/user/transport"
->>>>>>> master:server/assets/swaggerui/swagger.json
     }
   },
   "responses": {
