@@ -6,8 +6,13 @@ import (
 	"os"
 	"strings"
 
+<<<<<<< HEAD:server/cmd/migration/main.go
+	homeschooling "github.com/mosarsh/homeschooling/server/src/models"
+	"github.com/mosarsh/homeschooling/server/src/utl/secure"
+=======
 	homeschooling "github.com/mosarsh/homeschooling/src/models"
 	"github.com/mosarsh/homeschooling/src/utl/secure"
+>>>>>>> master:server/cmd/migration/main.go
 
 	"github.com/go-pg/pg/v9"
 	"github.com/go-pg/pg/v9/orm"

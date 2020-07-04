@@ -9,7 +9,7 @@ import (
 	"github.com/go-pg/pg/v9/orm"
 	"github.com/labstack/echo"
 
-	homeschooling "github.com/mosarsh/homeschooling/src/models"
+	homeschooling "github.com/mosarsh/homeschooling/server/src/models"
 )
 
 // User represents the client for user table

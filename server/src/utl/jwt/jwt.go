@@ -5,7 +5,7 @@ import (
 	"strings"
 	"time"
 
-	homeschooling "github.com/mosarsh/homeschooling/src/models"
+	homeschooling "github.com/mosarsh/homeschooling/server/src/models"
 
 	"github.com/dgrijalva/jwt-go"
 )

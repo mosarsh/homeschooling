@@ -4,7 +4,7 @@ import (
 	"crypto/sha1"
 	"testing"
 
-	"github.com/mosarsh/homeschooling/src/utl/secure"
+	"github.com/mosarsh/homeschooling/server/src/utl/secure"
 	"github.com/stretchr/testify/assert"
 )
 

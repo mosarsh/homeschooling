@@ -5,7 +5,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/mosarsh/homeschooling/src/utl/middleware/secure"
+	"github.com/mosarsh/homeschooling/server/src/utl/middleware/secure"
 
 	"github.com/labstack/echo"
 	"github.com/stretchr/testify/assert"

@@ -3,7 +3,7 @@ package server_test
 import (
 	"testing"
 
-	"github.com/mosarsh/homeschooling/src/utl/server"
+	"github.com/mosarsh/homeschooling/server/src/utl/server"
 )
 
 // Improve tests

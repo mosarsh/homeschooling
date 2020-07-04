@@ -3,7 +3,7 @@ package config_test
 import (
 	"testing"
 
-	"github.com/mosarsh/homeschooling/src/utl/config"
+	"github.com/mosarsh/homeschooling/server/src/utl/config"
 	"github.com/stretchr/testify/assert"
 )
 

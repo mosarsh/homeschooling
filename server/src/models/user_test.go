@@ -3,7 +3,7 @@ package homeschooling_test
 import (
 	"testing"
 
-	homeschooling "github.com/mosarsh/homeschooling/src/models"
+	homeschooling "github.com/mosarsh/homeschooling/server/src/models"
 )
 
 func TestChangePassword(t *testing.T) {

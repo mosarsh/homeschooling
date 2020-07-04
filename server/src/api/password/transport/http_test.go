@@ -6,13 +6,13 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	homeschooling "github.com/mosarsh/homeschooling/src/models"
-	"github.com/mosarsh/homeschooling/src/api/password"
-	"github.com/mosarsh/homeschooling/src/api/password/transport"
+	"github.com/mosarsh/homeschooling/server/src/api/password"
+	"github.com/mosarsh/homeschooling/server/src/api/password/transport"
+	homeschooling "github.com/mosarsh/homeschooling/server/src/models"
 
-	"github.com/mosarsh/homeschooling/src/utl/mock"
-	"github.com/mosarsh/homeschooling/src/utl/mock/mockdb"
-	"github.com/mosarsh/homeschooling/src/utl/server"
+	"github.com/mosarsh/homeschooling/server/src/utl/mock"
+	"github.com/mosarsh/homeschooling/server/src/utl/mock/mockdb"
+	"github.com/mosarsh/homeschooling/server/src/utl/server"
 
 	"github.com/go-pg/pg/v9/orm"
 	"github.com/labstack/echo"
