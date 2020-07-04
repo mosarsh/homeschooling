@@ -9,8 +9,8 @@ import (
 	"github.com/labstack/echo"
 	"github.com/stretchr/testify/assert"
 
-	homeschooling "github.com/mosarsh/homeschooling/src/models"
-	"github.com/mosarsh/homeschooling/src/utl/middleware/auth"
+	homeschooling "github.com/mosarsh/homeschooling/server/src/models"
+	"github.com/mosarsh/homeschooling/server/src/utl/middleware/auth"
 )
 
 func echoHandler(mw ...echo.MiddlewareFunc) *echo.Echo {

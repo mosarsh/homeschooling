@@ -3,7 +3,7 @@ package mockdb
 import (
 	"github.com/go-pg/pg/v9/orm"
 
-	homeschooling "github.com/mosarsh/homeschooling/src/models"
+	homeschooling "github.com/mosarsh/homeschooling/server/src/models"
 )
 
 // User database mock

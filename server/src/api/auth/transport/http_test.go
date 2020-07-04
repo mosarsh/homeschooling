@@ -9,14 +9,14 @@ import (
 
 	"github.com/labstack/echo"
 
-	homeschooling "github.com/mosarsh/homeschooling/src/models"
-	"github.com/mosarsh/homeschooling/src/api/auth"
-	"github.com/mosarsh/homeschooling/src/api/auth/transport"
-	"github.com/mosarsh/homeschooling/src/utl/jwt"
-	authMw "github.com/mosarsh/homeschooling/src/utl/middleware/auth"
-	"github.com/mosarsh/homeschooling/src/utl/mock"
-	"github.com/mosarsh/homeschooling/src/utl/mock/mockdb"
-	"github.com/mosarsh/homeschooling/src/utl/server"
+	homeschooling "github.com/mosarsh/homeschooling/server/src/models"
+	"github.com/mosarsh/homeschooling/server/src/api/auth"
+	"github.com/mosarsh/homeschooling/server/src/api/auth/transport"
+	"github.com/mosarsh/homeschooling/server/src/utl/jwt"
+	authMw "github.com/mosarsh/homeschooling/server/src/utl/middleware/auth"
+	"github.com/mosarsh/homeschooling/server/src/utl/mock"
+	"github.com/mosarsh/homeschooling/server/src/utl/mock/mockdb"
+	"github.com/mosarsh/homeschooling/server/src/utl/server"
 
 	"github.com/go-pg/pg/v9/orm"
 	"github.com/stretchr/testify/assert"

@@ -6,10 +6,10 @@ import (
 	"github.com/go-pg/pg/v9/orm"
 	"github.com/labstack/echo"
 
-	homeschooling "github.com/mosarsh/homeschooling/src/models"
-	"github.com/mosarsh/homeschooling/src/api/user"
-	"github.com/mosarsh/homeschooling/src/utl/mock"
-	"github.com/mosarsh/homeschooling/src/utl/mock/mockdb"
+	homeschooling "github.com/mosarsh/homeschooling/server/src/models"
+	"github.com/mosarsh/homeschooling/server/src/api/user"
+	"github.com/mosarsh/homeschooling/server/src/utl/mock"
+	"github.com/mosarsh/homeschooling/server/src/utl/mock/mockdb"
 
 	"github.com/stretchr/testify/assert"
 )

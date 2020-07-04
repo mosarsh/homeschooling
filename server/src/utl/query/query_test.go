@@ -5,11 +5,11 @@ import (
 
 	"github.com/labstack/echo"
 
-	homeschooling "github.com/mosarsh/homeschooling/src/models"
+	homeschooling "github.com/mosarsh/homeschooling/server/src/models"
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/mosarsh/homeschooling/src/utl/query"
+	"github.com/mosarsh/homeschooling/server/src/utl/query"
 )
 
 func TestList(t *testing.T) {

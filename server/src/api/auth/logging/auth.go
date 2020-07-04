@@ -5,8 +5,8 @@ import (
 
 	"github.com/labstack/echo"
 
-	homeschooling "github.com/mosarsh/homeschooling/src/models"
-	"github.com/mosarsh/homeschooling/src/api/auth"
+	homeschooling "github.com/mosarsh/homeschooling/server/src/models"
+	"github.com/mosarsh/homeschooling/server/src/api/auth"
 )
 
 // New creates new auth logging service

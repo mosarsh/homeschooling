@@ -5,7 +5,7 @@ import (
 
 	"github.com/labstack/echo"
 
-	homeschooling "github.com/mosarsh/homeschooling/src/models"
+	homeschooling "github.com/mosarsh/homeschooling/server/src/models"
 )
 
 // Custom errors
