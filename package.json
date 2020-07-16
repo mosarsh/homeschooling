@@ -1,0 +1,27 @@
+{
+  "name": "homeschooling",
+  "version": "1.0.0",
+  "description": "Web app for teachers and students",
+  "main": "index.js",
+  "scripts": {
+    "dev:install": "./script/00-install-dev.sh",
+    "dev:up": "docker-compose -f docker/docker-compose.dev.yml up",
+    "dev:down": "docker-compose -f docker/docker-compose.dev.yml down",
+    "dev:uninstall": "docker-compose -f docker/docker-compose.dev.yml down --rmi all",
+    "dev:connect:api": "docker exec -it target_api_1 /bin/sh",
+    "dev:connect:db": "psql -h localhost -p 5432 -U postgres -d Passw0rd"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mosarsh/homeschooling.git"
+  },
+  "author": "Arshak Movsisyan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mosarsh/homeschooling/issues"
+  },
+  "homepage": "https://github.com/mosarsh/homeschooling#readme",
+  "dependencies": {
+    "postgres-migrations": "^4.0.3"
+  }
+}
