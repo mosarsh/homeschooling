@@ -39,7 +39,7 @@ func (a Auth) Authenticate(c echo.Context, user, pass string) (homeschooling.Aut
 		return homeschooling.AuthToken{}, err
 	}
 
-	return homeschooling.AuthToken{Token: token, RefreshToken: u.Token}, nil
+	return homeschooling.AuthToken{Token: token, RefreshToken: u.Token, User: u}, nil
 }
 
 // Refresh refreshes jwt token and puts new claims inside

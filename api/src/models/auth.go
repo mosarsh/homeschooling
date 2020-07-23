@@ -8,6 +8,7 @@ import (
 type AuthToken struct {
 	Token        string `json:"token"`
 	RefreshToken string `json:"refresh_token"`
+	User         User   `json:"user"`
 }
 
 // RefreshToken holds authentication token details

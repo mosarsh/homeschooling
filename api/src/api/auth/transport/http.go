@@ -56,7 +56,7 @@ func NewHTTP(svc auth.Service, e *echo.Echo, mw echo.MiddlewareFunc) {
 }
 
 type credentials struct {
-	Username string `json:"username" validate:"required"`
+	Email    string `json:"email" validate:"required"`
 	Password string `json:"password" validate:"required"`
 }
 
@@ -65,7 +65,7 @@ func (h *HTTP) login(c echo.Context) error {
 	if err := c.Bind(cred); err != nil {
 		return err
 	}
-	r, err := h.svc.Authenticate(c, cred.Username, cred.Password)
+	r, err := h.svc.Authenticate(c, cred.Email, cred.Password)
 	if err != nil {
 		return err
 	}

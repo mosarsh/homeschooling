@@ -20,12 +20,12 @@ func (u User) View(db orm.DB, id int) (homeschooling.User, error) {
 }
 
 // FindByUsername queries for single user by username
-func (u User) FindByUsername(db orm.DB, uname string) (homeschooling.User, error) {
+func (u User) FindByUsername(db orm.DB, email string) (homeschooling.User, error) {
 	var user homeschooling.User
 	sql := `SELECT "user".*, "role"."id" AS "role__id", "role"."access_level" AS "role__access_level", "role"."name" AS "role__name" 
 	FROM "users" AS "user" LEFT JOIN "roles" AS "role" ON "role"."id" = "user"."role_id" 
-	WHERE ("user"."username" = ? and deleted_at is null)`
-	_, err := db.QueryOne(&user, sql, uname)
+	WHERE ("user"."email" = ? and deleted_at is null)`
+	_, err := db.QueryOne(&user, sql, email)
 	return user, err
 }
 
