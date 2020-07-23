@@ -1,0 +1,83 @@
+version: '3'
+services:
+  server:
+    container_name: devenv-server
+    build:
+      context: ../.
+      dockerfile: docker/nginx/Dockerfile.dev
+    image: homeschooling-server
+    ports:
+      - '80:80' # Connect localhost 80 port to container 80 port
+    links: # Link services to access http://app and  http://api inside the container
+      - api:api
+      - app:app
+    depends_on:
+      - 'app'
+      - 'api'
+    restart: on-failure
+
+  app:
+    stdin_open: true
+    container_name: app
+    build:
+      context: ../.
+      dockerfile: docker/app/Dockerfile.dev
+    image: homeschooling-app
+    environment:
+      - NODE_ENV=development
+    volumes: 
+      - ./../app:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - '3000:3000' # For docker to now where to redirect HMR queries
+
+  api:
+    container_name: api
+    build:
+      context: ../.
+      dockerfile: docker/api/Dockerfile.dev
+    image: homeschooling-api
+    environment:
+      - DB_DRIVER=postgres
+      - DB_NAME=homeschooling
+      - DB_USER=postgres
+      - DB_PASSWORD=Passw0rd
+      - DB_HOST=db
+      - DB_PORT=5432
+      - NODE_ENV=development
+      - JWT_SECRET=C50FB325ABAC1A169E668CBFCFA771206CFA3918A01E8D5704B1ACB710D149F5
+      - DB_SSL_MODE=disable
+    links:
+      - db:db
+    volumes:
+      - ./../api:/usr/src/api
+    ports:
+      - '8080:8080'
+    restart: on-failure
+    depends_on:
+      - 'db'
+
+  db:
+    container_name: db
+    build:
+      context: ../.
+      dockerfile: docker/db/Dockerfile.dev
+    image: homeschooling-db
+    volumes:
+      - ./../db:/var/lib/postgresql/data
+    env_file: ../docker/db/psql.env
+    ports:
+      - '5432:5432'
+
+  pgadmin:
+    container_name: devenv-pgadmin
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: arshak.movsissian@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: Adm1nPassw0rd
+    depends_on:
+      - db
+    ports:
+      - '5050:80'
+    restart: unless-stopped
