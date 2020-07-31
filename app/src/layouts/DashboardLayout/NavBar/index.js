@@ -55,7 +55,7 @@ const navConfig = [
       },
       {
         title: 'Les travaux',
-        href: '/app/works',
+        href: '/app/assignments',
         icon: TrelloIcon
       },
       {
