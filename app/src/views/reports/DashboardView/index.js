@@ -36,7 +36,7 @@ function DashboardView() {
   return (
     <Page
       className={classes.root}
-      title="Dashboard"
+      title="Tableau de bord"
     >
       <Container
         maxWidth={false}

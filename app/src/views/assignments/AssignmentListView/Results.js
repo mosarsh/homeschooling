@@ -5,10 +5,9 @@ import PropTypes from 'prop-types';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import {
   Box,
+  Button,
   Card,
-  CardHeader,
   Checkbox,
-  Divider,
   IconButton,
   SvgIcon,
   Table,
@@ -22,25 +21,47 @@ import {
 } from '@material-ui/core';
 import {
   Edit as EditIcon,
-  ArrowRight as ArrowRightIcon
+  ArrowRight as ArrowRightIcon,
+  Bold
 } from 'react-feather';
 import Label from 'src/components/Label';
-//import GenericMoreButton from 'src/components/GenericMoreButton';
-import BulkOperations from './BulkOperations';
 
 function applyPagination(assignments, page, limit) {
   return assignments.slice(page * limit, page * limit + limit);
 }
 
-const paymentStatusColors = {
+const assignmentStatusColors = {
   canceled: 'error',
   draft: 'warning',
   published: 'success',
   rejected: 'error'
 };
 
-const useStyles = makeStyles(() => ({
-  root: {}
+const useStyles = makeStyles((theme) => ({
+  root: {},
+  bulkOperations: {
+    position: 'relative'
+  },
+  bulkActions: {
+    paddingLeft: 4,
+    paddingRight: 4,
+    marginTop: 6,
+    position: 'absolute',
+    width: '100%',
+    zIndex: 2,
+    backgroundColor: theme.palette.background.default
+  },
+  bulkAction: {
+    marginLeft: theme.spacing(2)
+  },
+  title:{
+    fontWeight: '500'
+  },
+  avatar: {
+    height: 42,
+    width: 42,
+    marginRight: theme.spacing(1)
+  }
 }));
 
 function Results({ className, assignments, ...rest }) {
@@ -81,27 +102,30 @@ function Results({ className, assignments, ...rest }) {
       className={clsx(classes.root, className)}
       {...rest}
     >
-      <Typography
-        color="textSecondary"
-        gutterBottom
-        variant="body2"
-      >
-        {assignments.length}
-        {' '}
-        Records found. Page
-        {' '}
-        {page + 1}
-        {' '}
-        of
-        {' '}
-        {Math.ceil(assignments.length / limit)}
-      </Typography>
       <Card>
-        <CardHeader
-          // action={<GenericMoreButton />}
-          title="Les travaux"
-        />
-        <Divider />
+      {enableBulkOperations && (
+        <div className={classes.bulkOperations}>
+          <div className={classes.bulkActions}>
+            <Checkbox
+              checked={selectedAllAssignments}
+              indeterminate={selectedSomeAssignments}
+              onChange={handleSelectAllAssignments}
+            />
+            <Button
+              variant="outlined"
+              className={classes.bulkAction}
+            >
+              Supprimer
+            </Button>
+            <Button
+              variant="outlined"
+              className={classes.bulkAction}
+            >
+              Éditer
+            </Button>
+          </div>
+        </div>
+      )}
         <PerfectScrollbar>
           <Box minWidth={1150}>
             <Table>
@@ -121,7 +145,7 @@ function Results({ className, assignments, ...rest }) {
                     Statut
                   </TableCell>
                   <TableCell align="right">
-                    Actions
+                    Actes
                   </TableCell>
                 </TableRow>
               </TableHead>
@@ -131,6 +155,7 @@ function Results({ className, assignments, ...rest }) {
 
                   return (
                     <TableRow
+                      hover
                       key={assignment.id}
                       selected={selectedAssignments.indexOf(assignment.id) !== -1}
                     >
@@ -142,7 +167,12 @@ function Results({ className, assignments, ...rest }) {
                         />
                       </TableCell>
                       <TableCell>
-                        {assignment.topic}
+                        <Typography className={classes.title}
+                            variant="inherit"
+                            color="textPrimary"
+                          >
+                            {assignment.topic}
+                        </Typography>
                         <Typography
                           variant="body2"
                           color="textSecondary"
@@ -151,7 +181,7 @@ function Results({ className, assignments, ...rest }) {
                         </Typography>
                       </TableCell>                     
                       <TableCell>
-                        <Label color={paymentStatusColors[assignment.status]}>
+                        <Label color={assignmentStatusColors[assignment.status]}>
                           {assignment.status}
                         </Label>
                       </TableCell>
@@ -162,14 +192,6 @@ function Results({ className, assignments, ...rest }) {
                         >
                           <SvgIcon fontSize="small">
                             <EditIcon />
-                          </SvgIcon>
-                        </IconButton>
-                        <IconButton
-                          component={RouterLink}
-                          to={"/app/assignments/" + assignment.id}
-                        >
-                          <SvgIcon fontSize="small">
-                            <ArrowRightIcon />
                           </SvgIcon>
                         </IconButton>
                       </TableCell>
@@ -190,10 +212,6 @@ function Results({ className, assignments, ...rest }) {
           rowsPerPageOptions={[5, 10, 25]}
         />
       </Card>
-      <BulkOperations
-        open={enableBulkOperations}
-        selected={selectedAssignments}
-      />
     </div>
   );
 }

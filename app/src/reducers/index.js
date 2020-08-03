@@ -9,6 +9,7 @@ import assignmentListReducer from './assignments/assignmentListReducer';
 import assignmentCreateReducer from './assignments/assignmentCreateReducer';
 import assignmentEditReducer from './assignments/assignmentEditReducer';
 import assignmentReducer from './assignments/assignmentReducer';
+import studentListReducer from './students/studentListReducer';
 
 const rootReducer = combineReducers({
   account: accountReducer,
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   assignmentCreateReducer: assignmentCreateReducer,
   assignmentEditReducer: assignmentEditReducer,
   assignmentReducer: assignmentReducer,
+  studentListReducer: studentListReducer,
   notifications: notificationsReducer,
   chat: chatReducer,
   mail: mailReducer,

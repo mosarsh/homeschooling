@@ -7,8 +7,6 @@ import {
   ButtonGroup,
   Grid,
   Hidden,
-  IconButton,
-  Tooltip,
   Typography,
   makeStyles
 } from '@material-ui/core';
@@ -76,31 +74,12 @@ function Toolbar({
       <Hidden smDown>
         <Grid item>
           <Typography
-            variant="h3"
+            variant="h4"
             color="textPrimary"
           >
             {moment(date).format('dddd, MMMM Do YYYY')}
           </Typography>
         </Grid>
-        {/*<Grid item>
-          {viewOptions.map((viewOption) => {
-            const Icon = viewOption.icon;
-
-            return (
-              <Tooltip
-                key={viewOption.value}
-                title={viewOption.label}
-              >
-                <IconButton
-                  color={viewOption.value === view ? 'secondary' : 'default'}
-                  onClick={() => onViewChange(viewOption.value)}
-                >
-                  <Icon />
-                </IconButton>
-              </Tooltip>
-            );
-          })}
-        </Grid>*/}
       </Hidden>
     </Grid>
   );
