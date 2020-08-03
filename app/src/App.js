@@ -21,6 +21,8 @@ import ScrollReset from 'src/components/ScrollReset';
 import useSettings from 'src/hooks/useSettings';
 import { createTheme } from 'src/theme';
 import Routes from 'src/Routes';
+import moment from 'moment';
+import 'moment/locale/fr';
 
 const history = createBrowserHistory();
 const jss = create({ plugins: [...jssPreset().plugins, rtl()] });
@@ -51,6 +53,7 @@ const useStyles = makeStyles(() => createStyles({
 
 function App() {
   useStyles();
+  moment.locale('fr');
 
   const { settings } = useSettings();
 

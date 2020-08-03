@@ -55,7 +55,7 @@ function AssignmentListView() {
     return (
         <Page 
         className={classes.root} 
-        title="Works"
+        title="Les travaux"
         >
             <Container maxWidth={false}>
                 <Header onEventAdd={handleEventAddClick} />

@@ -63,22 +63,27 @@ const routesConfig = [
       {
         exact: true,
         path: '/app/assignments',
-        component: lazy(() => import('src/views/assignment/AssignmentListView'))
+        component: lazy(() => import('src/views/assignments/AssignmentListView'))
       },
       {
         exact: true,
         path: '/app/assignments/create',
-        component: lazy(() => import('src/views/assignment/AssignmentCreateView'))
+        component: lazy(() => import('src/views/assignments/AssignmentCreateView'))
       },
       {
         exact: true,
         path: '/app/assignments/:assignmentId',
-        component: lazy(() => import('src/views/assignment/AssignmentDetailsView'))
+        component: lazy(() => import('src/views/assignments/AssignmentDetailsView'))
       },
       {
         exact: true,
         path: '/app/assignments/:assignmentId/edit',
-        component: lazy(() => import('src/views/assignment/AssignmentEditView'))
+        component: lazy(() => import('src/views/assignments/AssignmentEditView'))
+      },
+      {
+        exact: true,
+        path: '/app/students',
+        component: lazy(() => import('src/views/students/StudentListView'))
       },
       {
         exact: true,

@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import clsx from 'clsx';
 import PropTypes from 'prop-types';
+import clsx from 'clsx';
 import {
-  Button,
+  Box,
   Breadcrumbs,
+  Button,
   Grid,
   Link,
   SvgIcon,
@@ -12,7 +13,11 @@ import {
   makeStyles
 } from '@material-ui/core';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
-import { PlusCircle as PlusCircleIcon } from 'react-feather';
+import {
+  PlusCircle as PlusCircleIcon,
+  Download as DownloadIcon,
+  Upload as UploadIcon
+} from 'react-feather';
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -27,12 +32,14 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function Header({
-  className,
-  onEventAdd,
-  ...rest
-}) {
+
+
+function Header({ className, setOpenAddStudentDialog, ...rest }) {
   const classes = useStyles();
+
+  const handleClickOpenAddStudentDialog = () => {
+    setOpenAddStudentDialog(true);
+  };
 
   return (
     <Grid
@@ -47,35 +54,27 @@ function Header({
           separator={<NavigateNextIcon fontSize="small" />}
           aria-label="breadcrumb"
         >
-          <Link
-            variant="body1"
-            color="inherit"
-            to="/app"
-            component={RouterLink}
-          >
-            Tableau de bord
-          </Link>
           <Typography
             variant="body1"
             color="textPrimary"
           >
-            Les travaux
+            Les élèves
           </Typography>
         </Breadcrumbs>
         <Typography
           variant="h3"
           color="textPrimary"
         >
-          Voici ce que vous avez prévu
+          Tous les élèves
         </Typography>
+        
       </Grid>
       <Grid item>
         <Button
           color="secondary"
           variant="contained"
           className={classes.action}
-          component={RouterLink}
-          to="/app/assignments/create"
+          onClick={handleClickOpenAddStudentDialog}
         >
           <SvgIcon
             fontSize="small"
@@ -83,7 +82,7 @@ function Header({
           >
             <PlusCircleIcon />
           </SvgIcon>
-          nouveau travail
+          Nouvel éleve
         </Button>
       </Grid>
     </Grid>
@@ -92,11 +91,7 @@ function Header({
 
 Header.propTypes = {
   className: PropTypes.string,
-  onEventAdd: PropTypes.func
-};
-
-Header.defaultProps = {
-  onEventAdd: () => {}
+  setOpenAddStudentDialog: PropTypes.func
 };
 
 export default Header;
