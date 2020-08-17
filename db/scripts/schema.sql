@@ -1,53 +1,54 @@
-create table if not exists companies (
-    id bigint not null,
-    created_at timestamptz,
-    updated_at timestamptz,
-    deleted_at timestamptz,
-    name text,
-    active boolean,
-    primary key (id) 
-);
+create extension if not exists "uuid-ossp";
 
-create table if not exists locations (
-    id bigint not null,
-    created_at timestamptz,
-    updated_at timestamptz,
-    deleted_at timestamptz,
+create table if not exists public.school (
+    id bigserial primary key,
     name text,
-    active boolean,
     address text,
-    company_id bigint,
-    primary key (id),
-    foreign key (company_id) REFERENCES companies (id)
+    postal text,
+    phone text,
+    uuid uuid not null default uuid_generate_v1()
 );
 
-create table if not exists roles (
-    id bigint not null,
+create table if not exists public.role (
+    id bigserial primary key,
     access_level bigint,
-    name text,
-    primary key (id) 
+    name text
 );
 
-create table if not exists users (
-    id bigint not null,
-    created_at timestamptz,
-    updated_at timestamptz,
-    deleted_at timestamptz,
+create table if not exists public.user (
+    id bigserial primary key,
     first_name text,
     last_name text,
-    username text,
-    password text,
     email text,
-    mobile text,
+    password text,
+    active boolean,
     phone text,
     address text,
-    active boolean,
     last_login timestamptz,
     last_password_change timestamptz,
     token text,
-    role_id bigint,
-    company_id bigint,
-    location_id bigint,
-    primary key (id),
-    foreign key (role_id) REFERENCES roles (id)
+    role_id bigint not null,
+    school_id bigint not null,
+    locked_at timestamptz,
+    created_at timestamptz,
+    updated_at timestamptz,
+    deleted_at timestamptz,
+    uuid uuid not null default uuid_generate_v1(),
+    foreign key (role_id) REFERENCES role (id),
+    foreign key (school_id) REFERENCES school (id)
+);
+
+create table if not exists public.class (
+    id bigint primary key,
+    name text,
+    school_id bigint not null,
+    created_at timestamptz,
+    foreign key (school_id) REFERENCES school (id)
+);
+
+create table if not exists public.subject (
+    id bigserial primary key,
+    name text,
+    school_id bigint not null,
+    foreign key (school_id) REFERENCES school (id)
 );

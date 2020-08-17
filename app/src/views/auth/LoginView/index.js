@@ -78,7 +78,8 @@ function LoginView() {
   const history = useHistory();
 
   const handleSubmitSuccess = () => {
-    history.push('/app');
+    // todo: depending on role redirect user
+    history.push('/app/student/assignments');
   };
 
   return (
