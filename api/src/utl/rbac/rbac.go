@@ -19,18 +19,14 @@ func checkBool(b bool) error {
 // User returns user data stored in jwt token
 func (s Service) User(c echo.Context) homeschooling.AuthUser {
 	id := c.Get("id").(int)
-	companyID := c.Get("company_id").(int)
-	locationID := c.Get("location_id").(int)
-	user := c.Get("username").(string)
+	schoolId := c.Get("school_id").(int)
 	email := c.Get("email").(string)
 	role := c.Get("role").(homeschooling.AccessRole)
 	return homeschooling.AuthUser{
-		ID:         id,
-		Username:   user,
-		CompanyID:  companyID,
-		LocationID: locationID,
-		Email:      email,
-		Role:       role,
+		Id:       id,
+		SchoolId: schoolId,
+		Email:    email,
+		Role:     role,
 	}
 }
 
@@ -49,29 +45,17 @@ func (s Service) EnforceUser(c echo.Context, ID int) error {
 	return checkBool(c.Get("id").(int) == ID)
 }
 
-// EnforceCompany checks whether the request to apply change to company data
-// is done by the user belonging to the that company and that the user has role CompanyAdmin.
-// If user has admin role, the check for company doesnt need to pass.
-func (s Service) EnforceCompany(c echo.Context, ID int) error {
+// EnforceSchool checks whether the request to apply change to school data
+// is done by the user belonging to the that school and that the user has role SchoolAdmin.
+// If user has admin role, the check for school doesnt need to pass.
+func (s Service) EnforceCompany(c echo.Context, Id int) error {
 	if s.isAdmin(c) {
 		return nil
 	}
-	if err := s.EnforceRole(c, homeschooling.CompanyAdminRole); err != nil {
+	if err := s.EnforceRole(c, homeschooling.SchoolAdminRole); err != nil {
 		return err
 	}
-	return checkBool(c.Get("company_id").(int) == ID)
-}
-
-// EnforceLocation checks whether the request to change location data
-// is done by the user belonging to the requested location
-func (s Service) EnforceLocation(c echo.Context, ID int) error {
-	if s.isCompanyAdmin(c) {
-		return nil
-	}
-	if err := s.EnforceRole(c, homeschooling.LocationAdminRole); err != nil {
-		return err
-	}
-	return checkBool(c.Get("location_id").(int) == ID)
+	return checkBool(c.Get("school_id").(int) == Id)
 }
 
 func (s Service) isAdmin(c echo.Context) bool {
@@ -80,16 +64,16 @@ func (s Service) isAdmin(c echo.Context) bool {
 
 func (s Service) isCompanyAdmin(c echo.Context) bool {
 	// Must query company ID in database for the given user
-	return !(c.Get("role").(homeschooling.AccessRole) > homeschooling.CompanyAdminRole)
+	return !(c.Get("role").(homeschooling.AccessRole) > homeschooling.SchoolAdminRole)
 }
 
 // AccountCreate performs auth check when creating a new account
 // Location admin cannot create accounts, needs to be fixed on EnforceLocation function
-func (s Service) AccountCreate(c echo.Context, roleID homeschooling.AccessRole, companyID, locationID int) error {
-	if err := s.EnforceLocation(c, locationID); err != nil {
-		return err
-	}
-	return s.IsLowerRole(c, roleID)
+func (s Service) AccountCreate(c echo.Context, roleId homeschooling.AccessRole, schoolId int) error {
+	// if err := s.EnforceLocation(c, locationID); err != nil {
+	// return err
+	// }
+	return s.IsLowerRole(c, roleId)
 }
 
 // IsLowerRole checks whether the requesting user has higher role than the user it wants to change

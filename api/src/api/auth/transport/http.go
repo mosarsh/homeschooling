@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/mosarsh/homeschooling/server/src/api/auth"
+	homeschooling "github.com/mosarsh/homeschooling/server/src/models"
 
 	"github.com/labstack/echo"
 )
@@ -53,11 +54,36 @@ func NewHTTP(svc auth.Service, e *echo.Echo, mw echo.MiddlewareFunc) {
 	//  200: userResp
 	//  500: err
 	e.GET("/me", h.me, mw)
+
+	// swagger:route POST /register
+	// Create user
+	// responses:
+	// 201: userResp
+	// 400: errMsg
+	// 401: err
+	// 403: errMsg
+	// 500: err
+	e.POST("/register", h.register)
+
 }
+
+// Custom errors
+var (
+	ErrPasswordsNotMaching = echo.NewHTTPError(http.StatusBadRequest, "Passwords do not match")
+)
 
 type credentials struct {
 	Email    string `json:"email" validate:"required"`
 	Password string `json:"password" validate:"required"`
+}
+
+type createReq struct {
+	FirstName       string                   `json:"firstName" validate:"required"`
+	LastName        string                   `json:"lastName" validate:"required"`
+	Password        string                   `json:"password" validate:"required,min=8"`
+	PasswordConfirm string                   `json:"passwordConfirm" validate:"required"`
+	Email           string                   `json:"email" validate:"required,email"`
+	RoleId          homeschooling.AccessRole `json:"roleId" validate:"required"`
 }
 
 func (h *HTTP) login(c echo.Context) error {
@@ -88,4 +114,35 @@ func (h *HTTP) me(c echo.Context) error {
 		return err
 	}
 	return c.JSON(http.StatusOK, user)
+}
+
+func (h *HTTP) register(c echo.Context) error {
+	r := new(createReq)
+
+	if err := c.Bind(r); err != nil {
+
+		return err
+	}
+
+	if r.Password != r.PasswordConfirm {
+		return ErrPasswordsNotMaching
+	}
+
+	if r.RoleId < homeschooling.SuperAdminRole || r.RoleId > homeschooling.TeacherRole {
+		return homeschooling.ErrBadRequest
+	}
+
+	usr, err := h.svc.Register(c, homeschooling.Register{
+		Password:  r.Password,
+		Email:     r.Email,
+		FirstName: r.FirstName,
+		LastName:  r.LastName,
+		RoleId:    r.RoleId,
+	})
+
+	if err != nil {
+		return err
+	}
+
+	return c.JSON(http.StatusOK, usr)
 }

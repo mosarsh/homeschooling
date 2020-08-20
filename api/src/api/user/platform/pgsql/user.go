@@ -5,7 +5,6 @@ import (
 	"strings"
 
 	"github.com/go-pg/pg/v9"
-
 	"github.com/go-pg/pg/v9/orm"
 	"github.com/labstack/echo"
 
@@ -17,14 +16,13 @@ type User struct{}
 
 // Custom errors
 var (
-	ErrAlreadyExists = echo.NewHTTPError(http.StatusInternalServerError, "Username or email already exists.")
+	ErrAlreadyExists = echo.NewHTTPError(http.StatusInternalServerError, "Email already exists.")
 )
 
 // Create creates a new user on database
 func (u User) Create(db orm.DB, usr homeschooling.User) (homeschooling.User, error) {
 	var user = new(homeschooling.User)
-	err := db.Model(user).Where("lower(username) = ? or lower(email) = ? and deleted_at is null",
-		strings.ToLower(usr.Username), strings.ToLower(usr.Email)).Select()
+	err := db.Model(user).Where("lower(email) = ? and deleted_at is null", strings.ToLower(usr.Email)).Select()
 	if err == nil || err != pg.ErrNoRows {
 		return homeschooling.User{}, ErrAlreadyExists
 	}
@@ -33,12 +31,12 @@ func (u User) Create(db orm.DB, usr homeschooling.User) (homeschooling.User, err
 	return usr, err
 }
 
-// View returns single user by ID
+// View returns single user by uuid
 func (u User) View(db orm.DB, id int) (homeschooling.User, error) {
 	var user homeschooling.User
 	sql := `SELECT "user".*, "role"."id" AS "role__id", "role"."access_level" AS "role__access_level", "role"."name" AS "role__name" 
-	FROM "users" AS "user" LEFT JOIN "roles" AS "role" ON "role"."id" = "user"."role_id" 
-	WHERE ("user"."id" = ? and deleted_at is null)`
+	FROM "user" AS "u" LEFT JOIN "role" AS "r" ON "r"."id" = "u"."role_id" 
+	WHERE ("u"."uuid" = ? and deleted_at is null)`
 	_, err := db.QueryOne(&user, sql, id)
 	return user, err
 }
@@ -52,9 +50,9 @@ func (u User) Update(db orm.DB, user homeschooling.User) error {
 // List returns list of all users retrievable for the current user, depending on role
 func (u User) List(db orm.DB, qp *homeschooling.ListQuery, p homeschooling.Pagination) ([]homeschooling.User, error) {
 	var users []homeschooling.User
-	q := db.Model(&users).Relation("Role").Limit(p.Limit).Offset(p.Offset).Where("deleted_at is null").Order("user.id desc")
+	q := db.Model(&users).Relation("Role").Limit(p.Limit).Offset(p.Offset).Where("deleted_at is null").Order("user.created_at desc")
 	if qp != nil {
-		q.Where(qp.Query, qp.ID)
+		q.Where(qp.Query, qp.Id)
 	}
 	err := q.Select()
 	return users, err

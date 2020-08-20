@@ -26,16 +26,12 @@ func Middleware(tokenParser TokenParser) echo.MiddlewareFunc {
 			claims := token.Claims.(jwt.MapClaims)
 
 			id := int(claims["id"].(float64))
-			companyID := int(claims["c"].(float64))
-			locationID := int(claims["l"].(float64))
-			username := claims["u"].(string)
+			schoolId := int(claims["c"].(float64))
 			email := claims["e"].(string)
 			role := homeschooling.AccessRole(claims["r"].(float64))
 
 			c.Set("id", id)
-			c.Set("company_id", companyID)
-			c.Set("location_id", locationID)
-			c.Set("username", username)
+			c.Set("school_id", schoolId)
 			c.Set("email", email)
 			c.Set("role", role)
 

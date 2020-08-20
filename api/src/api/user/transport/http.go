@@ -145,14 +145,12 @@ var (
 type createReq struct {
 	FirstName       string `json:"first_name" validate:"required"`
 	LastName        string `json:"last_name" validate:"required"`
-	Username        string `json:"username" validate:"required,min=3,alphanum"`
 	Password        string `json:"password" validate:"required,min=8"`
 	PasswordConfirm string `json:"password_confirm" validate:"required"`
 	Email           string `json:"email" validate:"required,email"`
 
-	CompanyID  int                      `json:"company_id" validate:"required"`
-	LocationID int                      `json:"location_id" validate:"required"`
-	RoleID     homeschooling.AccessRole `json:"role_id" validate:"required"`
+	SchoolId int                      `json:"school_id"`
+	RoleId   homeschooling.AccessRole `json:"role_id" validate:"required"`
 }
 
 func (h HTTP) create(c echo.Context) error {
@@ -167,19 +165,17 @@ func (h HTTP) create(c echo.Context) error {
 		return ErrPasswordsNotMaching
 	}
 
-	if r.RoleID < homeschooling.SuperAdminRole || r.RoleID > homeschooling.UserRole {
-		return homeschooling.ErrBadRequest
-	}
+	//if r.RoleId < homeschooling.SuperAdminRole || r.RoleId > homeschooling.StudentRole {
+	//return homeschooling.ErrBadRequest
+	//}
 
 	usr, err := h.svc.Create(c, homeschooling.User{
-		Username:   r.Username,
-		Password:   r.Password,
-		Email:      r.Email,
-		FirstName:  r.FirstName,
-		LastName:   r.LastName,
-		CompanyID:  r.CompanyID,
-		LocationID: r.LocationID,
-		RoleID:     r.RoleID,
+		Password:  r.Password,
+		Email:     r.Email,
+		FirstName: r.FirstName,
+		LastName:  r.LastName,
+		SchoolId:  r.SchoolId,
+		RoleId:    r.RoleId,
 	})
 
 	if err != nil {
@@ -249,7 +245,6 @@ func (h HTTP) update(c echo.Context) error {
 		ID:        id,
 		FirstName: req.FirstName,
 		LastName:  req.LastName,
-		Mobile:    req.Mobile,
 		Phone:     req.Phone,
 		Address:   req.Address,
 	})

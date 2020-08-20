@@ -30,6 +30,7 @@ type Service interface {
 	Authenticate(echo.Context, string, string) (homeschooling.AuthToken, error)
 	Refresh(echo.Context, string) (string, error)
 	Me(echo.Context) (homeschooling.User, error)
+	Register(echo.Context, homeschooling.Register) (homeschooling.Register, error)
 }
 
 // Auth represents auth application service
@@ -44,9 +45,10 @@ type Auth struct {
 // UserDB represents user repository interface
 type UserDB interface {
 	View(orm.DB, int) (homeschooling.User, error)
-	FindByUsername(orm.DB, string) (homeschooling.User, error)
+	FindByEmail(orm.DB, string) (homeschooling.User, error)
 	FindByToken(orm.DB, string) (homeschooling.User, error)
 	Update(orm.DB, homeschooling.User) error
+	Register(orm.DB, homeschooling.Register) (homeschooling.Register, error)
 }
 
 // TokenGenerator represents token generator (jwt) interface
@@ -58,9 +60,11 @@ type TokenGenerator interface {
 type Securer interface {
 	HashMatchesPassword(string, string) bool
 	Token(string) string
+	Hash(string) string
 }
 
 // RBAC represents role-based-access-control interface
 type RBAC interface {
 	User(echo.Context) homeschooling.AuthUser
+	//Register(echo.Context) homeschooling.Register
 }

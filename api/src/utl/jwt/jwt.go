@@ -63,12 +63,10 @@ func (s Service) ParseToken(authHeader string) (*jwt.Token, error) {
 // GenerateToken generates new JWT token and populates it with user data
 func (s Service) GenerateToken(u homeschooling.User) (string, error) {
 	return jwt.NewWithClaims(s.algo, jwt.MapClaims{
-		"id":  u.Base.ID,
-		"u":   u.Username,
+		"id":  u.Base.Id,
 		"e":   u.Email,
 		"r":   u.Role.AccessLevel,
-		"c":   u.CompanyID,
-		"l":   u.LocationID,
+		"s":   u.SchoolId,
 		"exp": time.Now().Add(s.ttl).Unix(),
 	}).SignedString(s.key)
 

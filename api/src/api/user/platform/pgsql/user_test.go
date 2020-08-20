@@ -23,45 +23,39 @@ func TestCreate(t *testing.T) {
 			name:    "Fail on insert duplicate ID",
 			wantErr: true,
 			req: homeschooling.User{
-				Email:      "tomjones@mail.com",
-				FirstName:  "Tom",
-				LastName:   "Jones",
-				Username:   "tomjones",
-				RoleID:     1,
-				CompanyID:  1,
-				LocationID: 1,
-				Password:   "pass",
+				Email:     "tomjones@mail.com",
+				FirstName: "Tom",
+				LastName:  "Jones",
+				RoleId:    1,
+				SchoolId:  1,
+				Password:  "pass",
 				Base: homeschooling.Base{
-					ID: 1,
+					Id: 1,
 				},
 			},
 		},
 		{
 			name: "Success",
 			req: homeschooling.User{
-				Email:      "newtomjones@mail.com",
-				FirstName:  "Tom",
-				LastName:   "Jones",
-				Username:   "newtomjones",
-				RoleID:     1,
-				CompanyID:  1,
-				LocationID: 1,
-				Password:   "pass",
+				Email:     "newtomjones@mail.com",
+				FirstName: "Tom",
+				LastName:  "Jones",
+				RoleId:    1,
+				SchoolId:  1,
+				Password:  "pass",
 				Base: homeschooling.Base{
-					ID: 2,
+					Id: 2,
 				},
 			},
 			wantData: homeschooling.User{
-				Email:      "newtomjones@mail.com",
-				FirstName:  "Tom",
-				LastName:   "Jones",
-				Username:   "newtomjones",
-				RoleID:     1,
-				CompanyID:  1,
-				LocationID: 1,
-				Password:   "pass",
+				Email:     "newtomjones@mail.com",
+				FirstName: "Tom",
+				LastName:  "Jones",
+				RoleId:    1,
+				SchoolId:  1,
+				Password:  "pass",
 				Base: homeschooling.Base{
-					ID: 2,
+					Id: 2,
 				},
 			},
 		},
@@ -69,8 +63,7 @@ func TestCreate(t *testing.T) {
 			name:    "User already exists",
 			wantErr: true,
 			req: homeschooling.User{
-				Email:    "newtomjones@mail.com",
-				Username: "newtomjones",
+				Email: "newtomjones@mail.com",
 			},
 		},
 	}
@@ -87,10 +80,9 @@ func TestCreate(t *testing.T) {
 			Name:        "SUPER_ADMIN",
 		},
 		&homeschooling.User{
-			Email:    "nottomjones@mail.com",
-			Username: "nottomjones",
+			Email: "nottomjones@mail.com",
 			Base: homeschooling.Base{
-				ID: 1,
+				Id: 1,
 			},
 		})
 	if err != nil {
@@ -103,8 +95,8 @@ func TestCreate(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			resp, err := udb.Create(db, tt.req)
 			assert.Equal(t, tt.wantErr, err != nil)
-			if tt.wantData.ID != 0 {
-				if resp.ID == 0 {
+			if tt.wantData.Id != 0 {
+				if resp.Id == 0 {
 					t.Error("expected data, but got empty struct.")
 					return
 				}
@@ -132,16 +124,14 @@ func TestView(t *testing.T) {
 			name: "Success",
 			id:   2,
 			wantData: homeschooling.User{
-				Email:      "tomjones@mail.com",
-				FirstName:  "Tom",
-				LastName:   "Jones",
-				Username:   "tomjones",
-				RoleID:     1,
-				CompanyID:  1,
-				LocationID: 1,
-				Password:   "newPass",
+				Email:     "tomjones@mail.com",
+				FirstName: "Tom",
+				LastName:  "Jones",
+				RoleId:    1,
+				SchoolId:  1,
+				Password:  "newPass",
 				Base: homeschooling.Base{
-					ID: 2,
+					Id: 2,
 				},
 				Role: &homeschooling.Role{
 					ID:          1,
@@ -170,8 +160,8 @@ func TestView(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			user, err := udb.View(db, tt.id)
 			assert.Equal(t, tt.wantErr, err != nil)
-			if tt.wantData.ID != 0 {
-				if user.ID == 0 {
+			if tt.wantData.Id != 0 {
+				if user.Id == 0 {
 					t.Errorf("response was empty due to: %v", err)
 				} else {
 					tt.wantData.CreatedAt = user.CreatedAt
@@ -194,29 +184,24 @@ func TestUpdate(t *testing.T) {
 			name: "Success",
 			usr: homeschooling.User{
 				Base: homeschooling.Base{
-					ID: 2,
+					Id: 2,
 				},
 				FirstName: "Z",
 				LastName:  "Freak",
 				Address:   "Address",
 				Phone:     "123456",
-				Mobile:    "345678",
-				Username:  "newUsername",
 			},
 			wantData: homeschooling.User{
-				Email:      "tomjones@mail.com",
-				FirstName:  "Z",
-				LastName:   "Freak",
-				Username:   "tomjones",
-				RoleID:     1,
-				CompanyID:  1,
-				LocationID: 1,
-				Password:   "newPass",
-				Address:    "Address",
-				Phone:      "123456",
-				Mobile:     "345678",
+				Email:     "tomjones@mail.com",
+				FirstName: "Z",
+				LastName:  "Freak",
+				RoleId:    1,
+				SchoolId:  1,
+				Password:  "newPass",
+				Address:   "Address",
+				Phone:     "123456",
 				Base: homeschooling.Base{
-					ID: 2,
+					Id: 2,
 				},
 			},
 		},
@@ -243,10 +228,10 @@ func TestUpdate(t *testing.T) {
 				fmt.Println(tt.wantErr, err)
 			}
 			assert.Equal(t, tt.wantErr, err != nil)
-			if tt.wantData.ID != 0 {
+			if tt.wantData.Id != 0 {
 				user := homeschooling.User{
 					Base: homeschooling.Base{
-						ID: tt.usr.ID,
+						Id: tt.usr.Id,
 					},
 				}
 				if err := db.Select(&user); err != nil {
@@ -284,21 +269,19 @@ func TestList(t *testing.T) {
 				Offset: 0,
 			},
 			qp: &homeschooling.ListQuery{
-				ID:    1,
+				Id:    1,
 				Query: "company_id = ?",
 			},
 			wantData: []homeschooling.User{
 				{
-					Email:      "tomjones@mail.com",
-					FirstName:  "Tom",
-					LastName:   "Jones",
-					Username:   "tomjones",
-					RoleID:     1,
-					CompanyID:  1,
-					LocationID: 1,
-					Password:   "newPass",
+					Email:     "tomjones@mail.com",
+					FirstName: "Tom",
+					LastName:  "Jones",
+					RoleId:    1,
+					SchoolId:  1,
+					Password:  "newPass",
 					Base: homeschooling.Base{
-						ID: 2,
+						Id: 2,
 					},
 					Role: &homeschooling.Role{
 						ID:          1,
@@ -307,16 +290,14 @@ func TestList(t *testing.T) {
 					},
 				},
 				{
-					Email:      "johndoe@mail.com",
-					FirstName:  "John",
-					LastName:   "Doe",
-					Username:   "johndoe",
-					RoleID:     1,
-					CompanyID:  1,
-					LocationID: 1,
-					Password:   "hunter2",
+					Email:     "johndoe@mail.com",
+					FirstName: "John",
+					LastName:  "Doe",
+					RoleId:    1,
+					SchoolId:  1,
+					Password:  "hunter2",
 					Base: homeschooling.Base{
-						ID: 1,
+						Id: 1,
 					},
 					Role: &homeschooling.Role{
 						ID:          1,
@@ -369,21 +350,19 @@ func TestDelete(t *testing.T) {
 			name: "Success",
 			usr: homeschooling.User{
 				Base: homeschooling.Base{
-					ID:        2,
+					Id:        2,
 					DeletedAt: mock.TestTime(2018),
 				},
 			},
 			wantData: homeschooling.User{
-				Email:      "tomjones@mail.com",
-				FirstName:  "Tom",
-				LastName:   "Jones",
-				Username:   "tomjones",
-				RoleID:     1,
-				CompanyID:  1,
-				LocationID: 1,
-				Password:   "newPass",
+				Email:     "tomjones@mail.com",
+				FirstName: "Tom",
+				LastName:  "Jones",
+				RoleId:    1,
+				SchoolId:  1,
+				Password:  "newPass",
 				Base: homeschooling.Base{
-					ID: 2,
+					Id: 2,
 				},
 			},
 		},

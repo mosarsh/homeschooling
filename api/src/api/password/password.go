@@ -27,7 +27,7 @@ func (p Password) Change(c echo.Context, userID int, oldPass, newPass string) er
 		return ErrIncorrectPassword
 	}
 
-	if !p.sec.Password(newPass, u.FirstName, u.LastName, u.Username, u.Email) {
+	if !p.sec.Password(newPass, u.FirstName, u.LastName, u.Email) {
 		return ErrInsecurePassword
 	}
 

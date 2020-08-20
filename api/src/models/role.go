@@ -11,18 +11,18 @@ const (
 	AdminRole AccessRole = 110
 
 	// CompanyAdminRole can edit company specific things
-	CompanyAdminRole AccessRole = 120
+	SchoolAdminRole AccessRole = 120
 
-	// LocationAdminRole can edit location specific things
-	LocationAdminRole AccessRole = 130
+	// TeacherRole is a standard teacher
+	TeacherRole AccessRole = 200
 
-	// UserRole is a standard user
-	UserRole AccessRole = 200
+	// StudentRole is a standard teacher
+	StudentRole AccessRole = 300
 )
 
 // Role model
 type Role struct {
-	ID          AccessRole `json:"id"`
+	Id          AccessRole `json:"id"`
 	AccessLevel AccessRole `json:"access_level"`
 	Name        string     `json:"name"`
 }

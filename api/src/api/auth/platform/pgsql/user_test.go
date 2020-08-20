@@ -27,16 +27,14 @@ func TestView(t *testing.T) {
 			name: "Success",
 			id:   2,
 			wantData: homeschooling.User{
-				Email:      "tomjones@mail.com",
-				FirstName:  "Tom",
-				LastName:   "Jones",
-				Username:   "tomjones",
-				RoleID:     1,
-				CompanyID:  1,
-				LocationID: 1,
-				Password:   "newPass",
+				Email:     "tomjones@mail.com",
+				FirstName: "Tom",
+				LastName:  "Jones",
+				RoleId:    1,
+				SchoolId:  1,
+				Password:  "newPass",
 				Base: homeschooling.Base{
-					ID: 2,
+					Id: 2,
 				},
 				Role: &homeschooling.Role{
 					ID:          1,
@@ -65,8 +63,8 @@ func TestView(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			user, err := udb.View(db, tt.id)
 			assert.Equal(t, tt.wantErr, err != nil)
-			if tt.wantData.ID != 0 {
-				if user.ID == 0 {
+			if tt.wantData.Id != 0 {
+				if user.Id == 0 {
 					t.Errorf("empty response: %v", err)
 				} else {
 					tt.wantData.CreatedAt = user.CreatedAt
@@ -94,16 +92,14 @@ func TestFindByUsername(t *testing.T) {
 			name:     "Success",
 			username: "tomjones",
 			wantData: homeschooling.User{
-				Email:      "tomjones@mail.com",
-				FirstName:  "Tom",
-				LastName:   "Jones",
-				Username:   "tomjones",
-				RoleID:     1,
-				CompanyID:  1,
-				LocationID: 1,
-				Password:   "newPass",
+				Email:     "tomjones@mail.com",
+				FirstName: "Tom",
+				LastName:  "Jones",
+				RoleId:    1,
+				SchoolId:  1,
+				Password:  "newPass",
 				Base: homeschooling.Base{
-					ID: 2,
+					Id: 2,
 				},
 				Role: &homeschooling.Role{
 					ID:          1,
