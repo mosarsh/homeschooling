@@ -62,5 +62,6 @@ func (a Auth) Register(c echo.Context, req homeschooling.Register) (homeschoolin
 	//return homeschooling.User{}, err
 	//}
 	req.Password = a.sec.Hash(req.Password)
+	req.RoleId = homeschooling.TeacherRole
 	return a.udb.Register(a.db, req)
 }

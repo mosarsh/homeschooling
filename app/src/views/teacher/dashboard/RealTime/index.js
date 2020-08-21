@@ -90,19 +90,19 @@ function RealTime({ className, ...rest }) {
 
   const pages = [
     {
-      pathname: '/app/projects',
+      pathname: 'Aiguise ton crayon',
       views: '24'
     },
     {
-      pathname: '/app/chat',
+      pathname: 'TÉtude métiers',
       views: '21'
     },
     {
-      pathname: '/cart',
+      pathname: 'Jogging mathématique',
       views: '15'
     },
     {
-      pathname: '/cart/checkout',
+      pathname: 'Les nombres tout compris',
       views: '8'
     }
   ];
@@ -126,9 +126,9 @@ function RealTime({ className, ...rest }) {
           </Typography>
         )}
         classes={{ action: classes.current }}
-        subheader="Page views per second"
+        subheader="Pages vues"
         subheaderTypographyProps={{ color: 'textSecondary', variant: 'body2' }}
-        title="Active users"
+        title="Élèves actifs"
         titleTypographyProps={{ color: 'textPrimary' }}
       />
       <Chart

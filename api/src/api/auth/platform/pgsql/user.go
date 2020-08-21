@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/go-pg/pg"
+	"github.com/go-pg/pg/v9"
 	"github.com/go-pg/pg/v9/orm"
 	"github.com/labstack/echo"
 
@@ -54,10 +54,10 @@ func (u User) Update(db orm.DB, user homeschooling.User) error {
 	return db.Update(&user)
 }
 
-// Register a new user on database
+// Register a new user on database //
 func (u User) Register(db orm.DB, usr homeschooling.Register) (homeschooling.Register, error) {
 	var user = new(homeschooling.Register)
-	err := db.Model(user).Table("user").Where("lower(email) = ? and deleted_at is null", strings.ToLower(usr.Email)).Select()
+	err := db.Model(user).Where("lower(email) = ? and deleted_at is null", strings.ToLower(usr.Email)).Select()
 	if err == nil || err != pg.ErrNoRows {
 		return homeschooling.Register{}, ErrAlreadyExists
 	}

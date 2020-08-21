@@ -66,7 +66,6 @@ func (s Service) GenerateToken(u homeschooling.User) (string, error) {
 		"id":  u.Base.Id,
 		"e":   u.Email,
 		"r":   u.Role.AccessLevel,
-		"s":   u.SchoolId,
 		"exp": time.Now().Add(s.ttl).Unix(),
 	}).SignedString(s.key)
 

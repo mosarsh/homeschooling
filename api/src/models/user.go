@@ -19,28 +19,28 @@ type User struct {
 	Token              string    `json:"-"`
 
 	Role *Role `json:"role,omitempty"`
+	//School *School `json:"school,omitempty`
 
-	RoleId   AccessRole `json:"-"`
-	SchoolId int        `json:"school_id,omitempty"`
+	RoleId AccessRole `json:"-"`
+	//SchoolId int        `json:"-"`
 }
 
 // AuthUser represents data stored in JWT token for user
 type AuthUser struct {
-	Id        int
-	SchoolId  int
-	TeacherId int
-	StudentId int
-	Email     string
-	Role      AccessRole
+	Id       int
+	SchoolId int
+	Email    string
+	Role     AccessRole
 }
 
 type Register struct {
-	FirstName       string
-	LastName        string
-	Email           string
-	Password        string
-	ConfirmPassword string
-	RoleId          AccessRole
+	Base
+	tableName struct{} `pg:"users, alias:u"`
+	FirstName string
+	LastName  string
+	Email     string
+	Password  string
+	RoleId    AccessRole
 }
 
 // ChangePassword updates user's password related fields

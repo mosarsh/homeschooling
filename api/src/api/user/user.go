@@ -10,7 +10,7 @@ import (
 
 // Create creates a new user account
 func (u User) Create(c echo.Context, req homeschooling.User) (homeschooling.User, error) {
-	if err := u.rbac.AccountCreate(c, req.RoleId, req.SchoolId); err != nil {
+	if err := u.rbac.AccountCreate(c, req.RoleId); err != nil {
 		return homeschooling.User{}, err
 	}
 	req.Password = u.sec.Hash(req.Password)

@@ -63,7 +63,7 @@ func NewHTTP(svc auth.Service, e *echo.Echo, mw echo.MiddlewareFunc) {
 	// 401: err
 	// 403: errMsg
 	// 500: err
-	e.POST("/register", h.register)
+	//e.POST("/register", h.register)
 
 }
 
@@ -78,12 +78,11 @@ type credentials struct {
 }
 
 type createReq struct {
-	FirstName       string                   `json:"firstName" validate:"required"`
-	LastName        string                   `json:"lastName" validate:"required"`
-	Password        string                   `json:"password" validate:"required,min=8"`
-	PasswordConfirm string                   `json:"passwordConfirm" validate:"required"`
-	Email           string                   `json:"email" validate:"required,email"`
-	RoleId          homeschooling.AccessRole `json:"roleId" validate:"required"`
+	FirstName       string `json:"firstName" validate:"required"`
+	LastName        string `json:"lastName" validate:"required"`
+	Password        string `json:"password" validate:"required,min=8"`
+	PasswordConfirm string `json:"passwordConfirm" validate:"required"`
+	Email           string `json:"email" validate:"required,email"`
 }
 
 func (h *HTTP) login(c echo.Context) error {
@@ -128,21 +127,16 @@ func (h *HTTP) register(c echo.Context) error {
 		return ErrPasswordsNotMaching
 	}
 
-	if r.RoleId < homeschooling.SuperAdminRole || r.RoleId > homeschooling.TeacherRole {
-		return homeschooling.ErrBadRequest
-	}
-
 	usr, err := h.svc.Register(c, homeschooling.Register{
 		Password:  r.Password,
 		Email:     r.Email,
 		FirstName: r.FirstName,
 		LastName:  r.LastName,
-		RoleId:    r.RoleId,
 	})
 
 	if err != nil {
 		return err
 	}
 
-	return c.JSON(http.StatusOK, usr)
+	return c.JSON(http.StatusCreated, usr)
 }

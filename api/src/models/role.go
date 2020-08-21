@@ -16,8 +16,11 @@ const (
 	// TeacherRole is a standard teacher
 	TeacherRole AccessRole = 200
 
-	// StudentRole is a standard teacher
-	StudentRole AccessRole = 300
+	// ParentRole is a standard parent
+	ParentRole AccessRole = 300
+
+	// StudentRole is a standard student
+	StudentRole AccessRole = 400
 )
 
 // Role model

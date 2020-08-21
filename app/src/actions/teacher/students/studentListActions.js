@@ -14,79 +14,86 @@ export function getStudents() {
 
             const students = [
                 {
+                  id: '5e887a62195cc5aef7e8ca5e',
+                  name: 'Timothé Rigal',
+                  email: 'timothé.rigal@gmail.com',
+                  avatar: '/static/images/avatars/avatar_1.png',
+                  status: 'joined'
+                },
+                {
                   id: '5e887a62195cc5aef7e8ca5d',
-                  name: 'Ekaterina Tankova',
-                  email: 'ekaterina.tankova@devias.io',
+                  name: 'Théodore Jauffret',
+                  email: 'théodore.jauffret@gmail.com',
                   avatar: '/static/images/avatars/avatar_2.png',
                   status: 'joined'
                 },
                 {
                   id: '5e887ac47eed253091be10cb',
-                  name: 'Cao Yu',
-                  email: 'cao.yu@devias.io',
+                  name: 'Denis Vasseur',
+                  email: 'denis.vas@gmail.com',
                   avatar: '/static/images/avatars/avatar_3.png',
                   status: 'joined'
                 },
                 {
                   id: '5e887b209c28ac3dd97f6db5',
-                  name: 'Alex Richardson',
-                  email: 'alex.richardson@devias.io',
+                  name: 'Joëlle Martin',
+                  email: 'joëlle.martin@gmail.com',
                   avatar: '/static/images/avatars/avatar_4.png',
                   status: 'joined'
                 },
                 {
                   id: '5e887b7602bdbc4dbb234b27',
-                  name: 'Anje Keizer',
-                  email: 'anje.keizer@devias.io',
+                  name: 'Jean-Baptiste Trouvé',
+                  email: 'jean-baptiste@gmail.com',
                   avatar: '/static/images/avatars/avatar_5.png',
                   status: 'joined'
                 },
                 {
                   id: '5e86809283e28b96d2d38537',
-                  name: 'Katarina Smith',
-                  email: 'katarina.smith@devias.io',
+                  name: 'René Balzac',
+                  email: 'rene.balzac@gmail.com',
                   avatar: '/static/images/avatars/avatar_6.png',
                   status: 'joined'
                 },
                 {
                   id: '5e86805e2bafd54f66cc95c3',
-                  name: 'Adam Denisov',
-                  email: 'adam.denisov@devias.io',
+                  name: 'Théo Lavigne',
+                  email: 'theo.lavigne@gmail.com',
                   avatar: '/static/images/avatars/avatar_7.png',
                   status: 'pending'
                 },
                 {
                   id: '5e887a1fbefd7938eea9c981',
-                  name: 'Miller Edwards',
-                  email: 'miller.edwards@devias.io',
+                  name: 'Bérénice Grandis',
+                  email: 'berenice.grandis@gmail.com',
                   avatar: '/static/images/avatars/avatar_8.png',
                   status: 'joined'
                 },
                 {
                   id: '5e887d0b3d090c1b8f162003',
-                  name: 'Emilee Simchenko',
-                  email: 'emilee.simchenko@devias.io',
+                  name: 'Rachelle Cousteau',
+                  email: 'rachelle.cousteau@gmail.com',
                   avatar: '/static/images/avatars/avatar_9.png',
                   status: 'joined'
                 },
                 {
                   id: '5e88792be2d4cfb4bf0971d9',
-                  name: 'Elliott Stone',
-                  email: 'elliott.stone@devias.io',
+                  name: 'Olivier Auvray',
+                  email: 'olivier.auvray@gmail.com',
                   avatar: '/static/images/avatars/avatar_10.png',
                   status: 'joined'
                 },
                 {
                   id: '5e8877da9a65442b11551975',
-                  name: 'Shen Zhi',
-                  email: 'shen.zhi@devias.io',
+                  name: 'Stéphane Le Tonnelier',
+                  email: 'stephane.tonn@gmail.com',
                   avatar: '/static/images/avatars/avatar_11.png',
                   status: 'joined'
                 },
                 {
                   id: '5e8680e60cba5019c5ca6fda',
-                  name: 'Merrile Burgett',
-                  email: 'merrile.burgett@devias.io',
+                  name: 'Victor Courbet',
+                  email: 'victor.courbet@gmail.com',
                   avatar: '/static/images/avatars/avatar_12.png',
                   status: 'joined'
                 }

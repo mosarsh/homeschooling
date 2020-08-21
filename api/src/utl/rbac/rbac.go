@@ -69,7 +69,7 @@ func (s Service) isCompanyAdmin(c echo.Context) bool {
 
 // AccountCreate performs auth check when creating a new account
 // Location admin cannot create accounts, needs to be fixed on EnforceLocation function
-func (s Service) AccountCreate(c echo.Context, roleId homeschooling.AccessRole, schoolId int) error {
+func (s Service) AccountCreate(c echo.Context, roleId homeschooling.AccessRole) error {
 	// if err := s.EnforceLocation(c, locationID); err != nil {
 	// return err
 	// }

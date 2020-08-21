@@ -174,7 +174,6 @@ func (h HTTP) create(c echo.Context) error {
 		Email:     r.Email,
 		FirstName: r.FirstName,
 		LastName:  r.LastName,
-		SchoolId:  r.SchoolId,
 		RoleId:    r.RoleId,
 	})
 

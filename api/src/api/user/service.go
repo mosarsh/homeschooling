@@ -54,6 +54,6 @@ type UDB interface {
 type RBAC interface {
 	User(echo.Context) homeschooling.AuthUser
 	EnforceUser(echo.Context, int) error
-	AccountCreate(echo.Context, homeschooling.AccessRole, int) error
+	AccountCreate(echo.Context, homeschooling.AccessRole) error
 	IsLowerRole(echo.Context, homeschooling.AccessRole) error
 }
