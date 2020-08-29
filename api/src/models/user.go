@@ -33,16 +33,6 @@ type AuthUser struct {
 	Role     AccessRole
 }
 
-type Register struct {
-	Base
-	tableName struct{} `pg:"users, alias:u"`
-	FirstName string
-	LastName  string
-	Email     string
-	Password  string
-	RoleId    AccessRole
-}
-
 // ChangePassword updates user's password related fields
 func (u *User) ChangePassword(hash string) {
 	u.Password = hash

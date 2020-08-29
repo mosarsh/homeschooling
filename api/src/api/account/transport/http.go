@@ -14,7 +14,7 @@ type HTTP struct {
 	svc account.Service
 }
 
-// NewHTTP creates new auth http service
+// NewHTTP creates new account http service
 func NewHTTP(svc account.Service, e *echo.Echo, mw echo.MiddlewareFunc) {
 	h := HTTP{svc}
 	// swagger:route POST /register
@@ -27,6 +27,11 @@ func NewHTTP(svc account.Service, e *echo.Echo, mw echo.MiddlewareFunc) {
 	// 500: err
 	e.POST("/register", h.register)
 }
+
+// Custom errors
+var (
+	ErrPasswordsNotMaching = echo.NewHTTPError(http.StatusBadRequest, "Passwords do not match")
+)
 
 type registerReq struct {
 	FirstName       string `json:"first_name" validate:"required"`

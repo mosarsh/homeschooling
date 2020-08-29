@@ -36,6 +36,9 @@ import (
 
 	"github.com/mosarsh/homeschooling/server/src/utl/zlog"
 
+	"github.com/mosarsh/homeschooling/server/src/api/account"
+	acl "github.com/mosarsh/homeschooling/server/src/api/account/logging"
+	act "github.com/mosarsh/homeschooling/server/src/api/account/transport"
 	"github.com/mosarsh/homeschooling/server/src/api/auth"
 	al "github.com/mosarsh/homeschooling/server/src/api/auth/logging"
 	at "github.com/mosarsh/homeschooling/server/src/api/auth/transport"
@@ -83,6 +86,7 @@ func Start(cfg *config.Configuration) error {
 	authMiddleware := authMw.Middleware(jwt)
 
 	at.NewHTTP(al.New(auth.Initialize(db, jwt, sec, rbac), log), e, authMiddleware)
+	act.NewHTTP(acl.New(account.Initialize(db, jwt, sec, rbac), log), e, authMiddleware)
 
 	v1 := e.Group("/v1")
 	v1.Use(authMiddleware)

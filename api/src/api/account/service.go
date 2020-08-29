@@ -5,7 +5,7 @@ import (
 	"github.com/go-pg/pg/v9/orm"
 	"github.com/labstack/echo"
 
-	"github.com/mosarsh/homeschooling/server/src/api/auth/platform/pgsql"
+	"github.com/mosarsh/homeschooling/server/src/api/account/platform/pgsql"
 	dto "github.com/mosarsh/homeschooling/server/src/models"
 )
 

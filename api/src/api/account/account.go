@@ -15,12 +15,5 @@ func (a Account) Register(c echo.Context, u dto.User) (dto.User, error) {
 	u.Password = a.sec.Hash(u.Password)
 	u.RoleId = dto.TeacherRole
 
-	token, err := a.tg.GenerateToken(u)
-	if err != nil {
-		return dto.User{}, dto.ErrUnauthorized
-	}
-
-	u.Token = token
-
 	return a.udb.Register(a.db, u)
 }
