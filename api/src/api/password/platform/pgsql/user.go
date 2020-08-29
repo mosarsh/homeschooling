@@ -11,7 +11,7 @@ type User struct{}
 
 // View returns single user by ID
 func (u User) View(db orm.DB, id int) (homeschooling.User, error) {
-	user := homeschooling.User{Base: homeschooling.Base{ID: id}}
+	user := homeschooling.User{Base: homeschooling.Base{Id: id}}
 	err := db.Select(&user)
 	return user, err
 }

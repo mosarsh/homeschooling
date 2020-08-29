@@ -47,7 +47,7 @@ function DashboardView() {
           container
           spacing={3}
         >
-          <Grid
+          {/*<Grid
             item
             lg={3}
             sm={6}
@@ -78,7 +78,7 @@ function DashboardView() {
             xs={12}
           >
             <RoiPerCustomer />
-          </Grid>
+          </Grid>*/}
           <Grid
             item
             lg={3}

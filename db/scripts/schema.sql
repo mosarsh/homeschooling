@@ -1,54 +1,54 @@
 create extension if not exists "uuid-ossp";
 
-create table if not exists public.school (
+create table if not exists public.schools (
     id bigserial primary key,
-    name text,
-    address text,
-    postal text,
-    phone text,
+    name varchar (250) not null,
+    address varchar (250) not null,
+    postal varchar (50),
+    phone text [],
     uuid uuid not null default uuid_generate_v1()
 );
 
-create table if not exists public.role (
+create table if not exists public.roles (
     id bigserial primary key,
     access_level bigint,
-    name text
+    name varchar (50)
 );
 
-create table if not exists public.user (
+create table if not exists public.users (
     id bigserial primary key,
-    first_name text,
-    last_name text,
-    email text,
+    first_name varchar (50),
+    last_name varchar (50),
+    email varchar (50) unique not null,
     password text,
     active boolean,
-    phone text,
-    address text,
+    phone text [],
+    address varchar (250),
     last_login timestamptz,
     last_password_change timestamptz,
     token text,
     role_id bigint not null,
-    school_id bigint not null,
+    school_id bigint,
     locked_at timestamptz,
     created_at timestamptz,
     updated_at timestamptz,
     deleted_at timestamptz,
     uuid uuid not null default uuid_generate_v1(),
-    foreign key (role_id) REFERENCES role (id),
-    foreign key (school_id) REFERENCES school (id)
+    foreign key (role_id) REFERENCES roles (id),
+    foreign key (school_id) REFERENCES schools (id)
 );
 
-create table if not exists public.class (
+create table if not exists public.classes (
     id bigint primary key,
-    name text,
+    name varchar (250),
     school_id bigint not null,
     created_at timestamptz,
-    foreign key (school_id) REFERENCES school (id)
+    foreign key (school_id) REFERENCES schools (id)
 );
 
-create table if not exists public.subject (
+create table if not exists public.subjectes (
     id bigserial primary key,
-    name text,
+    name varchar (250),
     school_id bigint not null,
-    foreign key (school_id) REFERENCES school (id)
+    foreign key (school_id) REFERENCES schools (id)
 );

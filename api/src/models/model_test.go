@@ -10,7 +10,7 @@ import (
 
 func TestBeforeInsert(t *testing.T) {
 	base := &homeschooling.Base{
-		ID: 1,
+		Id: 1,
 	}
 	base.BeforeInsert(context.TODO())
 	if base.CreatedAt.IsZero() {
@@ -23,7 +23,7 @@ func TestBeforeInsert(t *testing.T) {
 
 func TestBeforeUpdate(t *testing.T) {
 	base := &homeschooling.Base{
-		ID:        1,
+		Id:        1,
 		CreatedAt: mock.TestTime(2000),
 	}
 	base.BeforeUpdate(context.TODO())

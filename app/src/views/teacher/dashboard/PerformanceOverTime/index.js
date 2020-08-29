@@ -34,18 +34,18 @@ function PerformanceOverTime({ className, ...rest }) {
     thisYear: {
       data: [10, 5, 11, 20, 13, 28, 18, 4, 13, 12, 13, 5],
       labels: [
-        'Jan',
-        'Feb',
-        'Mar',
-        'Apr',
-        'May',
-        'Jun',
-        'Jul',
-        'Aug',
-        'Sep',
+        'Janv',
+        'Févr',
+        'Mars',
+        'Avr',
+        'Mai',
+        'Juin',
+        'Juil',
+        'Août',
+        'Sept',
         'Oct',
         'Nov',
-        'Dec'
+        'Déc'
       ]
     }
   };
@@ -57,7 +57,7 @@ function PerformanceOverTime({ className, ...rest }) {
     >
       <CardHeader
         action={<GenericMoreButton />}
-        title="Performance Over Time"
+        title="Performance au fil du temps"
       />
       <Divider />
       <CardContent>

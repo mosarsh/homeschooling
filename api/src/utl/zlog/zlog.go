@@ -32,7 +32,7 @@ func (z *Log) Log(ctx echo.Context, source, msg string, err error, params map[st
 
 	if id, ok := ctx.Get("id").(int); ok {
 		params["id"] = id
-		params["user"] = ctx.Get("username").(string)
+		params["user"] = ctx.Get("email").(string)
 	}
 
 	if err != nil {

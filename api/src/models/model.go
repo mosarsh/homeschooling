@@ -7,16 +7,16 @@ import (
 
 // Base contains common fields for all tables
 type Base struct {
-	ID        int       `json:"id"`
+	Id        int       `json:"id"`
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`
 	DeletedAt time.Time `json:"deleted_at,omitempty" pg:",soft_delete"`
 }
 
-// ListQuery holds company/location data used for list db queries
+// ListQuery holds school data used for list db queries
 type ListQuery struct {
 	Query string
-	ID    int
+	Id    int
 }
 
 // BeforeInsert hooks into insert operations, setting createdAt and updatedAt to current time

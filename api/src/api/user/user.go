@@ -10,7 +10,7 @@ import (
 
 // Create creates a new user account
 func (u User) Create(c echo.Context, req homeschooling.User) (homeschooling.User, error) {
-	if err := u.rbac.AccountCreate(c, req.RoleID, req.CompanyID, req.LocationID); err != nil {
+	if err := u.rbac.AccountCreate(c, req.RoleId); err != nil {
 		return homeschooling.User{}, err
 	}
 	req.Password = u.sec.Hash(req.Password)
@@ -52,7 +52,6 @@ type Update struct {
 	ID        int
 	FirstName string
 	LastName  string
-	Mobile    string
 	Phone     string
 	Address   string
 }
@@ -64,10 +63,10 @@ func (u User) Update(c echo.Context, r Update) (homeschooling.User, error) {
 	}
 
 	if err := u.udb.Update(u.db, homeschooling.User{
-		Base:      homeschooling.Base{ID: r.ID},
+		Base:      homeschooling.Base{Id: r.ID},
 		FirstName: r.FirstName,
 		LastName:  r.LastName,
-		Mobile:    r.Mobile,
+		Phone:     r.Phone,
 		Address:   r.Address,
 	}); err != nil {
 		return homeschooling.User{}, err

@@ -33,11 +33,12 @@ package api
 
 import (
 	"crypto/sha1"
-	"fmt"
-	"os"
 
 	"github.com/mosarsh/homeschooling/server/src/utl/zlog"
 
+	"github.com/mosarsh/homeschooling/server/src/api/account"
+	acl "github.com/mosarsh/homeschooling/server/src/api/account/logging"
+	act "github.com/mosarsh/homeschooling/server/src/api/account/transport"
 	"github.com/mosarsh/homeschooling/server/src/api/auth"
 	al "github.com/mosarsh/homeschooling/server/src/api/auth/logging"
 	at "github.com/mosarsh/homeschooling/server/src/api/auth/transport"
@@ -59,7 +60,11 @@ import (
 
 // Start starts the API service
 func Start(cfg *config.Configuration) error {
-	db_url := fmt.Sprintf("%s://%s:%s@%s:%s/%s?sslmode=%s", os.Getenv("DB_DRIVER"), os.Getenv("DB_USER"), os.Getenv("DB_PASSWORD"), os.Getenv("DB_HOST"), os.Getenv("DB_PORT"), os.Getenv("DB_NAME"), os.Getenv("DB_SSL_MODE"))
+	//db_url := fmt.Sprintf("%s://%s:%s@%s:%s/%s?sslmode=%s", os.Getenv("DB_DRIVER"), os.Getenv("DB_USER"), os.Getenv("DB_PASSWORD"), os.Getenv("DB_HOST"), os.Getenv("DB_PORT"), os.Getenv("DB_NAME"), os.Getenv("DB_SSL_MODE"))
+
+	// uncomment when using with localhost db host
+	db_url := "postgres://postgres:Passw0rd@localhost:5432/homeschooling?sslmode=disable"
+	jwt_secret := "C50FB325ABAC1A169E668CBFCFA771206CFA3918A01E8D5704B1ACB710D149F5" // os.Getenv("JWT_SECRET")
 
 	db, err := postgres.New(db_url, cfg.DB.Timeout, cfg.DB.LogQueries)
 	if err != nil {
@@ -68,7 +73,7 @@ func Start(cfg *config.Configuration) error {
 
 	sec := secure.New(cfg.App.MinPasswordStr, sha1.New())
 	rbac := rbac.Service{}
-	jwt, err := jwt.New(cfg.JWT.SigningAlgorithm, os.Getenv("JWT_SECRET"), cfg.JWT.DurationMinutes, cfg.JWT.MinSecretLength)
+	jwt, err := jwt.New(cfg.JWT.SigningAlgorithm, jwt_secret, cfg.JWT.DurationMinutes, cfg.JWT.MinSecretLength)
 	if err != nil {
 		return err
 	}
@@ -81,6 +86,7 @@ func Start(cfg *config.Configuration) error {
 	authMiddleware := authMw.Middleware(jwt)
 
 	at.NewHTTP(al.New(auth.Initialize(db, jwt, sec, rbac), log), e, authMiddleware)
+	act.NewHTTP(acl.New(account.Initialize(db, jwt, sec, rbac), log), e, authMiddleware)
 
 	v1 := e.Group("/v1")
 	v1.Use(authMiddleware)
